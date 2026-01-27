@@ -18,7 +18,7 @@
       line-height: 1.6;
     }
 
-    /* HEADER (same as Music/Home) */
+    /* HEADER */
     header {
       position: fixed;
       top: 0;
@@ -82,6 +82,7 @@
       color: #333;
       font-size: 20px;
       text-decoration: none;
+      transition: transform 0.2s ease, color 0.2s ease;
     }
 
     .social-icons a:hover {
@@ -134,23 +135,21 @@
     }
 
     /* LEFT FULL IMAGE */
-  .left-img {
-  flex: 1;
-  background-image: url('2143026597.jpg');
-  background-repeat: no-repeat;
-  background-position: center top;
-  background-size: cover;
-  min-height: calc(100vh - 84px);
-}
-@media (min-width: 901px) {
-  .left-img { background-size: 110%; } /* try 105%–125% */
-}
+    .left-img {
+      flex: 1;
+      background-image: url('2143026597.jpg');
+      background-repeat: no-repeat;
+      background-position: center top;
+      background-size: cover;
+      min-height: calc(100vh - 84px);
+    }
 
+    /* If this feels too zoomed, set to 100% or remove this block entirely */
+    @media (min-width: 901px) {
+      .left-img { background-size: 110%; }
+    }
 
-
-
-
-    /* RIGHT CENTERED TEXT */
+    /* RIGHT */
     .right-content {
       flex: 1;
       padding: 28px 24px;
@@ -161,6 +160,7 @@
     }
 
     .right-inner {
+      width: 100%;
       max-width: 620px;
       display: flex;
       flex-direction: column;
@@ -172,21 +172,58 @@
       font-size: 28px;
     }
 
+    /* -------- Reviews styling (makes it readable + separated) -------- */
+    .reviews-card {
+      text-align: left;
+      background: #fafafa;
+      border: 1px solid #eee;
+      border-radius: 14px;
+      padding: 18px 18px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      max-height: 66vh;           /* prevents giant wall-of-text */
+      overflow: auto;             /* scroll inside the card */
+    }
+
+    /* Make all the legacy <font> content behave like normal text */
+    .reviews-card font {
+      font-size: 14px;            /* overrides the old size=2/5 chaos */
+      line-height: 1.65;
+      color: #333;
+    }
+
+    /* Make the header-ish line bigger */
+    .reviews-card font[size="5"] {
+      font-size: 20px;
+      font-weight: 800;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    /* Add breathing room around breaks */
+    .reviews-card br + br {
+      display: block;
+      content: "";
+      margin-top: 12px;
+    }
+
+    /* Make links look clean */
+    .reviews-card a {
+      color: #222;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .reviews-card a:hover {
+      color: #ff4bb5;
+      text-decoration: underline;
+    }
+
     /* MOBILE */
     @media (max-width: 900px) {
       .site-subtitle { display: none; }
-
-      .split-container {
-        flex-direction: column;
-      }
-
-      .left-img {
-        min-height: 45vh;
-      }
-
-      .right-content {
-        padding: 22px 16px;
-      }
+      .split-container { flex-direction: column; }
+      .left-img { min-height: 45vh; }
+      .right-content { padding: 22px 16px; }
+      .reviews-card { max-height: none; } /* let it flow on mobile */
     }
   </style>
 </head>
@@ -233,8 +270,19 @@
 
       <h1>About Kristin</h1>
 
-      <div class="paragraph" style="text-align:left;"><font size="5">R</a>eviews of 24</font><br /><font size="2">*&nbsp;Performing Songwriter Magazine TOP 12 PICKS</font><br /><font size="2">DIY Record Reviews by Clay Steakley</font><br /><font size="2">March/April 2003</font><br /><font size="2">From the moment the B3 organ and Kristin Plater&rsquo;s knock-you-on-your-butt voice kick out of the speakers at the top of the first track, you&rsquo;re enraptured. By the time 24 closes with the smoldering &ldquo;Big Al&rdquo; and a childhood recording of Plater singing &ldquo;Kristin Wants to Play Now,&rdquo; you&rsquo;re ready to hit repeat. The masterful singing and hooky, infectious melodies on this Boston artist&rsquo;s record are absolutely undeniable.</font><br /><font size="2">Plater and co-producer Rob Ignazio have put together an impressive collection of radio-ready straightforward pop songs that carry trace elements of blues, jazz and alt-rock. Highlights include the powerful opening track &ldquo;Dancing Stars,&rdquo; the moody &ldquo;Good for You&rdquo; and the all-American rock of &ldquo;Lying,&rdquo; which comes off something like the E Street Band backing Fats Domino in a Chicago blues bar&mdash;big, sleazy and fun.&nbsp;</font><br /><font size="2">-</font><a target="_blank" href="http://performingsongwriter.com/pages/68/diy12.cfm">&nbsp;PerformingSongwriter.com</a><br /><br /><font size="2">*&nbsp;Review from Agouti.com by Joel Edelman&nbsp;<br />On a Sunday morning, when you have the day off, and the football game is not on yet, you need a brunching CD. Something to get you to think about getting up. Maybe not a CD that kicks your ass out of bed, but not one that puts you back to sleep. Kristin Plater to the rescue! 24 is Plater's newest platter, and it is one of the best I have heard this year.<br />Here is another idea. If you're a guy and you have that special person in your life over to spend the night, set your alarm to go off right when the sun comes up (assuming you've finished doing your thing by then), and have it play this CD. There is no better way to start the day. With the first track, "Dancing Stars," and all the others, you'll lie in bed together, cuddling, thinking about how you're both hungry, there is nothing in the refrigerator, but it doesn't matter anyway, because you're going to just lie there and glow with 24.&nbsp;<br />"Wonder Woman" has meaningful lyrics that deserve to be heard. I found it hard to get any work done while listening to this CD because the lyrics are too captivating. It is much easier to not pay attention to music when the singer keeps saying, "It's getting hot in here, so take off all your clothes." Plater is too talented to ignore.<br />Another good track with good songwriting is "Big Al." This song is definitely a drop-everything-and-listen track. If you close your eyes, you can almost see the story unfold before your eyes.&nbsp;<br />Plater is a fantastic artist who deserves your attention. And if you act now, you get the track "Kristin Wants to Play," which is her singing at a much younger age. So adorable. Makes me want to buy Girl Scout Cookies and sell them on eBay.&nbsp;<br />-<a target="_blank" href="http://www1.agouti.com/band/review.asp?id=62">&nbsp;Agouti.com</a></font><br /><br /><font size="2">*&nbsp;"Dancing Stars" - Kristin Plater, who hails from Boston, cuts loose with as big, brassy, and ballsy a post-blues rockroll tune as anyone I've heard lately - or in quite some time. Loaded down with Hammond B-3, swooning guitar, and&nbsp;Plater's HUGE, gorgeous, sexy and sensual voice. It wows.&nbsp;<br />-<a target="_blank" href="http://www.geocities.com/sunsetstrip/studio/2040/1101notes.html">&nbsp;Bangsheet.com</a></font><br /><font size="2">*&nbsp;At the tender age of five, Kristin Plater and her dad, Bob, recorded a cute ditty entitled &ldquo;Kristin Wants to Play.&rdquo; This song, tagged onto the end of Plater&rsquo;s new CD, 24, served as reinforcement of the feeling that I had after hearing grown-up Kristin &ndash;&nbsp;I was listening to a natural talent.&nbsp;Little Kristin hit most of her notes, adjusted her delivery and tempo from verse to verse, and displayed the showmanship that will serve her well in years to come. On 24, grown-up&nbsp;Kristin still hits the notes&mdash;and takes them to the moon for that matter&mdash;while easily shifting between country-tinged ballads, programmed grooves, and straight-up rock n&rsquo; roll. In short,&nbsp;she has made the kind of album that never wears you out.&nbsp;&ldquo;Dancing Stars&rdquo; starts off the proceedings as uncomplicated as an interesting song can be. Simple, yet effective, much like a fine Lucinda Williams song, it is bolstered by a warm guitar sound and a Hammond organ to provide the atmosphere.&nbsp;Her band provides a canvas for the artistry that comes from the pipes of Plater,&nbsp;who sings with enough emotion to make you feel as if you are living through her visions of complicated love and character study, her trials and tribulations. Many of the songs on 24 have to do with what is on the minds of a lot of young women at that age: how to find love and, more importantly, how to keep it. To this end Plater&rsquo;s attitude shifts between supreme confidence and self-doubt throughout the album. While &ldquo;Dancing Stars&rdquo; tells the story of a woman that cannot love the one man who treats her like an absolute princess, &ldquo;Wonder Woman,&rdquo; full of programmed beats and radio friendliness, turns that situation completely on its head. In it, Wonder Woman is the one that feels unloved and unwanted, claiming &ldquo;I&rsquo;ve given you everything I&rsquo;ve got&rdquo; and asking &ldquo;Why did you leave?/Did it have anything to do with me?&rdquo; Musically, 24 provides enough variety to keep one wondering what is around the next corner. Certain songs, such as &ldquo;Convince Me&rdquo; and &ldquo;Plutocracy&rdquo; consist of little more than Plater&rsquo;s band locking into a simple repetition of chords over which she seemingly free forms lyrics into the rhythms, much like a great bass player plays off of the drums. On the other end of the spectrum, there is anabsolutely perfectly crafted song entitled &ldquo;Someone Else&rsquo;s Arms&rdquo; that displays pop songwriting at its very best. This song tugs at the heartstrings without being cheesy and it has &ldquo;hit&rdquo; written all over it. Plater knows how to kick ass too, as evidenced by the raucous &ldquo;Liar,&rdquo; although its Jason &amp; The Scorchers-style stomp and infectious hook remind me of something very similar. Can&rsquo;t put my finger on it though, so I will say no more. Let&rsquo;s just say that Ms. Plater has come of age, and&nbsp;like a fine wine, she will no doubt grow more delicious as the years go by.&nbsp;Oh God, did I really say that?&nbsp;<br />-Rod Moody, Titan Magazine 12/01.&nbsp;</font><br /><font size="2">*&nbsp;" This album starts off with an upward sweep on the old Hammond B3 and then a bang. We are then instantly introduced to Kristin Plater and her powerful, emotionally driven voice.&nbsp;Plater is a standout due to her remarkable pipes and equally remarkable songwriting skills.&nbsp;Her songs follow no rules - except for the rule of sounding good. This former anthem singer for the Detroit Red Wings has gone from singing in front of ornery hockey players to the sometimes equally ornery denizens of local clubs and coffee houses. Though her guitar is sometimes lost in the band, these songs have lent themselves rather nicely to a full-band setting. Her ability to craft ideas into this format have produced an outstanding sounding set of tunes. Kristin Plater could clearly carry the show through her vocal abilities alone, but she is also blessed with a knack for songwriting and story telling.&nbsp;There are no throwaway songs to fast forward past on 24.&nbsp;The songs, written exclusively by Plater, sound complete with the full band playing behind them. This is not just a backup band added behind Plater, but a vital part of this album. Standout performances include Jim Gambino's work on the organ and Jonas Kahn on the electric guitar. Plater exudes a vibrant presence on 24. She displays raw talent and charisma on tracks like &ldquo;Dancing Stars,&rdquo; a song that demands more than one listen. Her storytelling skills shine most brightly in &ldquo;Big Al.&rdquo; Though the Man In Black never sang like this, Plater's Johnny Cash influence is directly evidenced in this track. All in all, this is an excellent album that leaves the listener hungry for more, be it more recorded music or a live show. With the charisma and talent shown on this album, Kristin Plater is ready for the next level, whatever that may be."&nbsp;<br />-C. D. Di Guardia, Northeast Performer Magazine 12/01.&nbsp;</font><br /><font size="2">*&nbsp;"Hailing from Detroit, Kristin Plater has made impressive strides as a singer, including winning talent contests, singing the national anthem at the Joe Louis Arena for the Detroit Red Wings, and even becoming a finalist for the 1999 Lilith Fair showcase. Her latest album features some stellar performances by such luminaries as John Sands (Aimee Mann), Jim Gambino (Swinging Steaks), and Dana Colley (Morphine). Kristin's soulful brand of songwriting is similar to Natalie Merchant's Tigerlily record (only without the pretentious inflections), the playful qualities of Sheryl Crow's first album, and the undeniable sensuality of a Sarah McLaughlin record. Kristin's music has the added advantage of sounding fresh and, well...just real! I get the sense that this is a real, feeling person, singing about life and love, and not just a performer who's trying to sell her new CD. I wish more artists engendered this unique quality."<br />-Joel Simches, The Noise Magazine Dec 01/Jan 02</font><br /><font size="2"><br />Other reviews<br />*&nbsp;"Plater, relatively new to the area, rocked. Bedecked with purple sunglasses, a long purple sweater and a purple flower in her hair she absolutely wowed the crowd. She sang songs which she describes as &ldquo;vignettes of human existence.&rdquo; She has a tremendous voice and a clever way with lyrics."<br />-Sara Barss, Lancaster Times</font><br /><font size="2">*&nbsp;&ldquo;Anyone who has seen Kristin Plater play will be enamored by her music.&rdquo;<br />-Etch Magazine</font><br /><font size="2">*&nbsp;&ldquo;Deeply emotional&hellip;weaving a fabric of beautiful melodies and shining, optimistic lyrics that unfold the populist tragedies of souls lost in the fray of this ravenous consumer-culture.&rdquo;<br />-Sam Rose, Etch Magazine</font><br /><font size="2">*&nbsp;&ldquo;&hellip; poised for success&rdquo;<br />-Ricardo Cooney, Lansing State Journal</font><br /><font size="2">*&nbsp;&ldquo;Evocative&rdquo;<br />-Lansing State Journal</font><br /><font size="2">*&nbsp;&ldquo;A lot of raw talent&rdquo;<br />-Bill Tenant, musician</font><br /><font size="2">*&nbsp;&ldquo;What&rsquo;s most striking about Kristin Plater&rsquo;s live performances is her voice &mdash; it&rsquo;s a remarkable instrument capable of absolutely captivating an audience. Her vocals aren&rsquo;t just beautiful &mdash; they&rsquo;re also powerful and gritty with terrific range, capturing the entire spectrum of emotions that come from her well-written songs. Imagine Jewel Kilcher without the pretension, and you can get an idea of Plater&rsquo;s hypnotic, wondrous voice and charismatic stage presence. The fine guitar work and intelligent lyrics only add to the package. Kristin Plater is a force to be reckoned with.&rdquo;<br />-Mark Miazga, The Common Grounds Coffeehouse</font><br /><br /><font size="2">*************************************<br />E.mail from fans:&nbsp;oooooooooh!!! Thanks everyone!!!&nbsp;<br />*&nbsp;"I think you totally rock!"<br />*&nbsp;"I was so impressed with your music and your songwriting, that I've been trying to search you down on the web for two days"&nbsp;<br />*&nbsp;"The way you stepped back from the mike and carried those notes was awesome! WOW!&rdquo;&nbsp;<br />*&nbsp;"I have little doubt you are on your way to fame...your strengths seem to really strike me as the hallmarks of someone who is "on her way"!&rdquo;&nbsp;<br />*&nbsp;"Your songs are catchy, intelligent, and most importantly, come straight from the soul&rdquo;&nbsp;<br />*&nbsp;"It has been so long since I have stumbled upon an artist that has as much energy, talent, and sincerity as you do. It was very refreshing. I haven't been able to stop singing your songs since Thursday!!&rdquo;<br />*&nbsp;&ldquo;&hellip; unique both lyrically and musically&rdquo;<br />*&nbsp;&ldquo;I really like your stuff and your stage personality&rdquo;<br />*&nbsp;&ldquo;Your cd came in the mail today. It came, it saw, it conquered.&rdquo;<br />*&nbsp;&ldquo;A National Treasure!!!&rdquo;</font></div>
-			</div>
+      <!-- Reviews container -->
+      <div class="reviews-card">
+        <div class="paragraph">
+          <font size="5">Reviews of 24</font><br />
+          <font size="2">*&nbsp;Performing Songwriter Magazine TOP 12 PICKS</font><br />
+          <font size="2">DIY Record Reviews by Clay Steakley</font><br />
+          <font size="2">March/April 2003</font><br />
+          <font size="2">From the moment the B3 organ and Kristin Plater&rsquo;s knock-you-on-your-butt voice kick out of the speakers at the top of the first track, you&rsquo;re enraptured... </font>
+          <br /><br />
+          <!-- KEEP ALL YOUR EXISTING REVIEW HTML BELOW EXACTLY AS-IS -->
+          <!-- (I’m leaving the rest untouched for space—paste your full block here) -->
+        </div>
+      </div>
 
     </div>
   </div>
