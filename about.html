@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Kristin</title>
+  <title>About | Kristin Plater</title>
 
-  <!-- Font Awesome (standard social icons) -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
@@ -18,7 +18,7 @@
       line-height: 1.6;
     }
 
-    /* HEADER */
+    /* HEADER (same as Music/Home) */
     header {
       position: fixed;
       top: 0;
@@ -49,207 +49,4 @@
       cursor: pointer;
       line-height: 1;
       border: none;
-      background: transparent;
-      padding: 6px 8px;
-    }
-
-    .title-wrap {
-      display: flex;
-      flex-direction: column;
-      min-width: 0;
-    }
-
-    .site-title {
-      font-size: 20px;
-      font-weight: 700;
-      line-height: 1.1;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .site-subtitle {
-      font-size: 13px;
-      color: #444;
-      margin-top: 2px;
-      line-height: 1.2;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .social-icons {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-shrink: 0;
-    }
-
-    .social-icons a {
-      color: #333;
-      font-size: 20px;
-      text-decoration: none;
-      transition: transform 0.2s ease, color 0.2s ease;
-    }
-
-    .social-icons a:hover {
-      color: #ff4bb5;
-      transform: scale(1.12);
-    }
-
-    /* SLIDE-OUT MENU */
-    nav#menu {
-      position: fixed;
-      top: 0;
-      left: -260px;
-      width: 260px;
-      height: 100%;
-      background: #fff;
-      border-right: 1px solid #ddd;
-      box-shadow: 2px 0 10px rgba(0,0,0,0.12);
-      padding-top: 72px;
-      transition: left 0.25s ease;
-      z-index: 999;
-    }
-
-    nav#menu.open { left: 0; }
-
-    nav#menu a {
-      display: block;
-      padding: 14px 18px;
-      color: #222;
-      text-decoration: none;
-      font-weight: 600;
-      border-bottom: 1px solid #f1f1f1;
-    }
-
-    nav#menu a:hover { background: #f7f7f7; }
-
-    .overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.35);
-      display: none;
-      z-index: 998;
-    }
-    .overlay.show { display: block; }
-
-    /* PAGE CONTENT */
-    .content {
-      margin-top: 84px;
-      padding: 28px 20px;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .about-wrap {
-      display: flex;
-      gap: 24px;
-      align-items: flex-start;
-    }
-
-    .about-wrap img {
-      width: 40%;
-      max-width: 360px;
-      height: auto;
-      border-radius: 10px;
-      object-fit: cover;
-      flex-shrink: 0;
-    }
-
-    .about-text {
-      width: 60%;
-    }
-
-    .about-text h2 {
-      margin-top: 0;
-    }
-
-    @media (max-width: 900px) {
-      .site-subtitle { display: none; }
-      .about-wrap { flex-direction: column; }
-      .about-wrap img, .about-text { width: 100%; }
-    }
-  </style>
-</head>
-
-<body>
-
-  <nav id="menu">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="music.html">Music</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-
-  <div id="overlay" class="overlay" onclick="toggleMenu(false)"></div>
-
-  <header>
-    <div class="header-row">
-
-      <div class="header-left">
-        <button class="hamburger" aria-label="Open menu" onclick="toggleMenu()">
-          <i class="fa-solid fa-bars"></i>
-        </button>
-
-        <div class="title-wrap">
-          <div class="site-title">Kristin Plater</div>
-          <div class="site-subtitle">Singer / Songwriter / Acoustic Guitar Player</div>
-        </div>
-      </div>
-
-      <div class="social-icons">
-        <a href="https://www.youtube.com/@kristinplater" target="_blank" aria-label="YouTube">
-          <i class="fa-brands fa-youtube"></i>
-        </a>
-        <a href="https://www.facebook.com/singingkristin/events" target="_blank" aria-label="Facebook">
-          <i class="fa-brands fa-facebook-f"></i>
-        </a>
-        <a href="https://www.instagram.com/orlarescuedoodle/" target="_blank" aria-label="Instagram">
-          <i class="fa-brands fa-instagram"></i>
-        </a>
-      </div>
-
-    </div>
-  </header>
-
-  <div class="content">
-    <div class="about-wrap">
-      <!-- Choose any image you want here -->
-      <img src="1960668241.jpg" alt="Kristin Plater" />
-
-      <div class="about-text">
-        <h2>About Kristin</h2>
-
-        <p>
-          Based in San Diego, CA, Kristin Plater (Play-ter) is a singer/songwriter/acoustic guitar player whose stunning voice has garnered comparisons to Pink, Sheryl Crow, Kelly Clarkson, and Patti Griffin. Kristin was a finalist for the coveted Lilith Fair showcase in Detroit, the first place winner of the Michigan State University talent contest, a finalist in the Pantene Pro-Voice contest, and a runner up in Gibson's The Way I Am competition judged by Ingrid Michaelson.
-        </p>
-
-        <p>
-          From her album 24, Wonder Woman quickly made its way to the top of playlists on college radio stations across the nation. She is a rising YouTube sensation thanks to her song, Why Not, which inspires people worldwide to have fun all the time.
-        </p>
-
-        <p>
-          She has performed at colleges, bars, and coffeehouses all over the United States as well as in Europe and Australia and has had the honor of singing the national anthem for the Detroit Red Wings at Joe Louis Arena and for the Detroit Pistons at The Palace of Auburn Hills.
-        </p>
-
-        <p>
-          Kristin writes acoustic pop with gripping songs about having fun, being in love, and finding a place in this world. Her rousing live performances charm her audience into rapt attention from first to last note. A strong stage presence and commanding voice quickly elevate her above not only the pandemonium of a packed house, but also the deluge of other singer songwriters. She is a treasure trove of sounds, stories and humor, a musical explorer guiding her storytelling with an innate sense of wonder and purpose.
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    function toggleMenu(force) {
-      const menu = document.getElementById('menu');
-      const overlay = document.getElementById('overlay');
-      const shouldOpen = (typeof force === 'boolean') ? force : !menu.classList.contains('open');
-      menu.classList.toggle('open', shouldOpen);
-      overlay.classList.toggle('show', shouldOpen);
-    }
-  </script>
-
-</body>
-</html>
+      background: t
