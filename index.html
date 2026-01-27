@@ -20,13 +20,16 @@
             line-height: 1.6;
         }
 
-        /* FULL WIDTH HERO IMAGE */
-        .full-width-hero img {
-            width: 100%;
-            height: auto;
-            display: block;
-            object-fit: cover;
-        }
+        
+/* Make text centered under image on phones */
+@media (max-width: 700px) {
+    .hero-text {
+        text-align: center;
+    }
+    .hero-split {
+        flex-direction: column;
+    }
+}
 
         /* COLOR PALETTE C */
         :root {
@@ -121,15 +124,15 @@
 
 <body>
 
-    <!-- FULL WIDTH HERO IMAGE -->
-    <div class="full-width-hero">
-        <img src="1960668241.jpg" alt="Kristin Plater">
-    </div>
-
-    <header>
+    <!-- HERO WITH SIDE-BY-SIDE LAYOUT -->
+<div class="hero-split">
+    <img src="1960668241.jpg" alt="Kristin Plater">
+    <div class="hero-text">
         <h1>Kristin Plater</h1>
         <p>Singer • Songwriter • Acoustic Guitar</p>
-    </header>
+    </div>
+</div>
+
 
     <section id="about">
         <h2>About Kristin</h2>
