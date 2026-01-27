@@ -147,13 +147,17 @@
 
     /* LEFT: background image (Weebly style Option C-ish) */
     .left-img {
-      flex: 1;
-      background-image: url('1960668241.jpg');
-      background-repeat: no-repeat;
-      background-position: center top;
-      background-size: cover;  /* keep Weebly full-bleed */
-      min-height: calc(100vh - 84px);
-    }
+  flex: 1;
+  background-image: url('1960668241.jpg');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  min-height: calc(100vh - 84px);
+}
+@media (min-width: 901px) {
+  .left-img { background-size: 110%; } /* try 105%–125% */
+}
+
 
     /* Slightly adjust “zoom” feel on desktop only (subtle; change 110% to 105% if needed) */
     @media (min-width: 901px) {
