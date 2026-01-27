@@ -1,162 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kristin Plater</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kristin Plater</title>
 
-    /* HEADER + HAMBURGER */
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: white;
-      padding: 15px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      z-index: 10;
-    }
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
 
-    .logo {
-      font-size: 1.4rem;
-      font-weight: bold;
-    }
+        /* HEADER */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: white;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid #ddd;
+        }
 
-    .hamburger {
-      cursor: pointer;
-      width: 30px;
-      height: 22px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
+        .header-left {
+            display: flex;
+            flex-direction: column;
+        }
 
-    .hamburger span {
-      height: 4px;
-      background: black;
-      border-radius: 3px;
-      display: block;
-    }
+        .site-title {
+            font-size: 22px;
+            font-weight: bold;
+        }
 
-    /* SIDE MENU */
-    nav {
-      position: fixed;
-      top: 0;
-      right: -250px;
-      width: 250px;
-      height: 100%;
-      background: white;
-      box-shadow: -2px 0 5px rgba(0,0,0,0.2);
-      transition: right 0.3s ease;
-      padding-top: 80px;
-      z-index: 9;
-    }
+        .site-subtitle {
+            font-size: 14px;
+            color: #444;
+        }
 
-    nav.open {
-      right: 0;
-    }
+        .social-icons a {
+            font-size: 22px;
+            margin-left: 12px;
+            text-decoration: none;
+        }
 
-    nav a {
-      display: block;
-      padding: 15px 20px;
-      text-decoration: none;
-      color: black;
-      font-size: 1.2rem;
-      border-bottom: 1px solid #eee;
-    }
+        .hamburger {
+            font-size: 28px;
+            cursor: pointer;
+            margin-left: 20px;
+        }
 
-    /* MAIN LAYOUT */
-    .container {
-      display: flex;
-      height: 100vh;
-      padding-top: 70px;
-    }
+        nav#menu {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 15px;
+            background: white;
+            width: 200px;
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+        nav#menu a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+        }
+        nav#menu a:hover {
+            background: #eee;
+        }
 
-    .left-image {
-      width: 50%;
-      background-size: cover;
-      background-position: center;
-    }
+        /* MAIN LAYOUT */
+        .content {
+            display: flex;
+            margin-top: 90px;
+            padding: 20px;
+            gap: 20px;
+        }
 
-    .right-text {
-      width: 50%;
-      padding: 60px;
-      overflow-y: auto;
-      font-size: 1.2rem;
-      line-height: 1.6;
-    }
+        .content img {
+            width: 45%;
+            height: auto;
+            border-radius: 10px;
+        }
 
-    /* SOCIAL ICONS */
-    .social-icons {
-      margin-top: 30px;
-    }
+        .text-block {
+            width: 55%;
+        }
 
-    .social-icons img {
-      width: 30px;
-      margin-right: 10px;
-      cursor: pointer;
-    }
-
-    @media(max-width: 900px) {
-      .container {
-        flex-direction: column;
-      }
-      .left-image, .right-text {
-        width: 100%;
-        height: auto;
-      }
-      .right-text {
-        padding: 30px;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    <div class="logo">Kristin Plater</div>
-    <div class="hamburger" onclick="toggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </header>
-
-  <nav id="sideMenu">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="portfolio.html">Portfolio</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-
-  <div class="container">
-    <div class="left-image" style="background-image:url('1805805841.jpg');"></div>
-    <div class="right-text">
-      <h1>Welcome</h1>
-      <p>
-        This is placeholder text. Replace with your actual Weebly content.
-      </p>
-
-      <div class="social-icons">
-        <img src="facebook.png" alt="Facebook" />
-        <img src="instagram.png" alt="Instagram" />
-        <img src="twitter.png" alt="Twitter" />
-      </div>
-    </div>
-  </div>
-
-<script>
-  function toggleMenu() {
-    document.getElementById('sideMenu').classList.toggle('open');
-  }
-</script>
-
-</body>
-</html>
+        @media(max-width: 768px) {
+            .content {
