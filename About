@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kristin Plater</title>
+
+<!-- Font Awesome for social icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- Clean, readable font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+/* -------------------- GENERAL STYLES -------------------- */
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: #ffffff; /* soft white background */
+    color: #333;
+    line-height: 1.6;
+}
+
+/* -------------------- HERO SECTION -------------------- */
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #8a4fff, #ff6ec7, #79a8ff); /* soft gradient */
+    color: #fff;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin: 0 0 15px 0;
+}
+
+.hero p {
+    font-size: 20px;
+    margin: 0;
+    opacity: 0.9;
+}
+
+/* -------------------- ABOUT SECTION -------------------- */
+section#about {
+    max-width: 900px;
+    margin: auto;
+    padding: 60px 20px;
+    text-align: center; /* center text like Weebly */
+}
+
+section#about h2 {
+    font-size: 32px;
+    color: #8a4fff; /* match hero accent */
+    margin-bottom: 25px;
+}
+
+section#about p {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+/* -------------------- PHOTO GALLERY -------------------- */
+section#photos {
+    max-width: 1000px;
+    margin: auto;
+    padding: 60px 20px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: r
