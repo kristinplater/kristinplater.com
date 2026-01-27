@@ -1,3 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Kristin</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* HEADER (same as index) */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: white;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .header-left { display: flex; flex-direction: column; }
+        .site-title { font-size: 22px; font-weight: bold; }
+        .site-subtitle { font-size: 14px; color: #444; }
+
+        .social-icons a {
+            font-size: 22px;
+            margin-left: 12px;
+            text-decoration: none;
+        }
+
+        .hamburger {
+            font-size: 28px;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+
+        nav#menu {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 15px;
+            background: white;
+            width: 200px;
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+        nav#menu a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+        }
+        nav#menu a:hover { background: #eee; }
+
+        /* PAGE CONTENT */
+        .content {
+            padding: 120px 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        img {
+            width: 100%;
+            max-width: 400px;
+            display: block;
+            margin: 0 auto 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-left">
+        <div class="site-title">Kristin Plater</div>
+        <div class="site-subtitle">Singer / Songwriter / Acoustic Guitar Player</div>
+    </div>
+
+    <div class="social-icons">
+        <a href="https://www.youtube.com" target="_blank">🎵</a>
+        <a href="https://www.instagram.com" target="_blank">📸</a>
+        <a href="https://www.facebook.com" target="_blank">👍</a>
+    </div>
+
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+
+    <nav id="menu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="music.html">Music</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<div class="content">
+    <img src="24_orig.jpg" alt="Kristin Photo" />
+
+    <h2>About Kristin</h2>
+
+    <p>Based in San Diego, CA, Kristin Plater (Play-ter) is a singer/songwriter/acoustic guitar player whose stunning voice has garnered comparisons to Pink, Sheryl Crow, Kelly Clarkson, and Patti Griffin.</p>
+
+    <p>Kristin was a finalist for the coveted Lilith Fair showcase in Detroit, the first place winner of the Michigan State University talent contest, a finalist in the Pantene Pro-Voice contest, and a runner up in Gibson's The Way I Am competition judged by Ingrid Michaelson.</p>
+
+    <p>From her album 24, Wonder Woman quickly made its way to the top of playlists on college radio stations across the nation. She is a rising YouTube sensation thanks to her song, Why Not, which inspires people worldwide to have fun all the time.</p>
+
+    <p>She has performed all over the United States as well as in Europe and Australia and has had the honor of singing the national anthem for the Detroit Red Wings and the Detroit Pistons.</p>
+
+    <p>Kristin writes acoustic pop with gripping songs about having fun, being in love, and finding a place in this world.</p>
+
+</div>
+
+<script>
+function toggleMenu() {
+    const menu = document.getElementById("menu");
+    menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+</script>
+
+</body>
+</html>
 <!DOCTYPE html> 
 <html lang="en">
     <p style="text-align:center;">
