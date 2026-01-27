@@ -136,11 +136,14 @@
     /* LEFT FULL IMAGE */
     .left-img {
       flex: 1;
-      background-image: url('1960668241.jpg'); /* change image here if desired */
-      background-size: cover;
+      background-image: url('1960668241.jpg');
+      background-size: contain;   /* zoom OUT */
+      background-repeat: no-repeat;
       background-position: center;
+      background-color: #f5f5f5; /* soft neutral background like Weebly */
       min-height: calc(100vh - 84px);
-    }
+}
+
 
     /* RIGHT CENTERED TEXT */
     .right-content {
