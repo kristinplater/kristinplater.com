@@ -233,10 +233,18 @@
   </header>
 
   <!-- Page content -->
-  <div class="content">
-    <img src="1960668241.jpg" alt="Kristin Plater photo" /> 
+ .left-img {
+  flex: 1;
+  background-image: url('1960668241.jpg');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  min-height: calc(100vh - 84px);
+}
+@media (min-width: 901px) {
+  .left-img { background-size: 110%; } /* try 105%–125% */
+}
 
-    <div class="text-block">
       <h2>Kristin Plater: 24</h2>
       
        <img class="top-photo" src="24_orig.jpg" alt="24">
