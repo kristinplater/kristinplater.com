@@ -15,6 +15,7 @@
       margin: 0;
       font-family: Arial, sans-serif;
       color: #333;
+      line-height: 1.6;
     }
 
     /* HEADER */
@@ -51,6 +52,7 @@
       border: none;
       background: transparent;
       padding: 6px 8px;
+      color: #333;
     }
 
     .title-wrap {
@@ -113,9 +115,7 @@
       z-index: 999;
     }
 
-    nav#menu.open {
-      left: 0;
-    }
+    nav#menu.open { left: 0; }
 
     nav#menu a {
       display: block;
@@ -126,11 +126,9 @@
       border-bottom: 1px solid #f1f1f1;
     }
 
-    nav#menu a:hover {
-      background: #f7f7f7;
-    }
+    nav#menu a:hover { background: #f7f7f7; }
 
-    /* Optional dim overlay when menu is open */
+    /* Dim overlay when menu open */
     .overlay {
       position: fixed;
       inset: 0;
@@ -138,50 +136,68 @@
       display: none;
       z-index: 998;
     }
+    .overlay.show { display: block; }
 
-    .overlay.show {
-      display: block;
+    /* -------- WEELY-STYLE SPLIT LAYOUT -------- */
+    .split-container {
+      display: flex;
+      margin-top: 84px;                /* below header */
+      min-height: calc(100vh - 84px);  /* full height below header */
     }
 
-    /* MAIN SPLIT LAYOUT */
-    .content {
-      display: flex;
-      gap: 24px;
-      padding: 24px;
-      margin-top: 84px; /* header height spacing */
+    /* LEFT: background image (Weebly style Option C-ish) */
+    .left-img {
+      flex: 1;
+      background-image: url('1960668241.jpg');
+      background-repeat: no-repeat;
+      background-position: center top;
+      background-size: cover;  /* keep Weebly full-bleed */
       min-height: calc(100vh - 84px);
     }
 
-    .content img {
-      width: 48%;
+    /* Slightly adjust “zoom” feel on desktop only (subtle; change 110% to 105% if needed) */
+    @media (min-width: 901px) {
+      .left-img { background-size: 110%; }
+    }
+
+    /* RIGHT: content panel */
+    .right-content {
+      flex: 1;
+      padding: 28px 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center; /* center text like you asked */
+    }
+
+    .right-inner {
+      width: 100%;
+      max-width: 620px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .right-inner h2 {
+      margin: 0;
+      font-size: 28px;
+      line-height: 1.2;
+    }
+
+    .top-photo {
+      width: 100%;
+      max-width: 420px;
       height: auto;
       border-radius: 10px;
-      object-fit: cover;
-      align-self: flex-start;
     }
 
-    .text-block {
-      width: 52%;
-    }
-
-    .text-block h2 {
-      margin-top: 0;
-    }
-
-    /* MOBILE */
+    /* MOBILE: stack image on top, content below */
     @media (max-width: 900px) {
-      .content {
-        flex-direction: column;
-      }
-
-      .content img,
-      .text-block {
-        width: 100%;
-      }
-
-      .site-subtitle {
-        display: none; /* matches many Weebly mobile headers (optional) */
-      }
+      .split-container { flex-direction: column; }
+      .left-img { min-height: 45vh; }
+      .right-content { padding: 22px 16px; justify-content: flex-start; }
+      .site-subtitle { display: none; }
     }
   </style>
 </head>
@@ -193,19 +209,17 @@
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="music.html">Music</a>
-    <!-- If you don't have contact.html yet, remove this link -->
+    <!-- Remove if you don't have contact.html yet -->
     <a href="contact.html">Contact</a>
   </nav>
 
-  <!-- Optional overlay -->
+  <!-- Overlay -->
   <div id="overlay" class="overlay" onclick="toggleMenu(false)"></div>
 
   <!-- Header -->
   <header>
     <div class="header-row">
-
       <div class="header-left">
-        <!-- Hamburger on LEFT of title (Weebly-style) -->
         <button class="hamburger" aria-label="Open menu" onclick="toggleMenu()">
           <i class="fa-solid fa-bars"></i>
         </button>
@@ -216,7 +230,6 @@
         </div>
       </div>
 
-      <!-- Standard social icons -->
       <div class="social-icons">
         <a href="https://www.youtube.com/@kristinplater" target="_blank" aria-label="YouTube">
           <i class="fa-brands fa-youtube"></i>
@@ -228,29 +241,27 @@
           <i class="fa-brands fa-instagram"></i>
         </a>
       </div>
-
     </div>
   </header>
 
-  <!-- Page content -->
- .left-img {
-  flex: 1;
-  background-image: url('1960668241.jpg');
-  background-repeat: no-repeat;
-  background-position: center top;
-  background-size: cover;
-  min-height: calc(100vh - 84px);
-}
-@media (min-width: 901px) {
-  .left-img { background-size: 110%; } /* try 105%–125% */
-}
+  <!-- Page split content -->
+  <div class="split-container">
+    <div class="left-img" aria-label="Kristin photo background"></div>
 
-      <h2>Kristin Plater: 24</h2>
-      
-       <img class="top-photo" src="24_orig.jpg" alt="24">
-      <p>
-        The 11 Song cd by Kristin Plater! Featuring Steve Mayone, Jonas Kahn, Steve Moore, John Sands (Aimee Mann), Eric Kilburn, Rob Ignazio, Jim Gambino (Swinging Steaks)and Dana Colley (Morphine). Recorded at Wellspring Sound Studio in Acton, MA and Porter Square Studio in Somerville, MA. Engineered, Mixed and Mastered by Rob Ignazio. Produced by Kristin Plater and Rob Ignazio. Photos by Deb Kelson, Graphic Design by Ken Scribner and Kristin Plater.
-      </p>
+    <div class="right-content">
+      <div class="right-inner">
+        <h2>Kristin Plater: 24</h2>
+
+        <img class="top-photo" src="24_orig.jpg" alt="24 album cover">
+
+        <p>
+          The 11 Song cd by Kristin Plater! Featuring Steve Mayone, Jonas Kahn, Steve Moore, John Sands (Aimee Mann),
+          Eric Kilburn, Rob Ignazio, Jim Gambino (Swinging Steaks) and Dana Colley (Morphine). Recorded at Wellspring
+          Sound Studio in Acton, MA and Porter Square Studio in Somerville, MA. Engineered, Mixed and Mastered by Rob
+          Ignazio. Produced by Kristin Plater and Rob Ignazio. Photos by Deb Kelson, Graphic Design by Ken Scribner and
+          Kristin Plater.
+        </p>
+      </div>
     </div>
   </div>
 
@@ -258,7 +269,6 @@
     function toggleMenu(force) {
       const menu = document.getElementById('menu');
       const overlay = document.getElementById('overlay');
-
       const shouldOpen = (typeof force === 'boolean') ? force : !menu.classList.contains('open');
       menu.classList.toggle('open', shouldOpen);
       overlay.classList.toggle('show', shouldOpen);
