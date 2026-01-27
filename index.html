@@ -1,146 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kristin Plater</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kristin Plater</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
 
-    <!-- Simple font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    /* HEADER + HAMBURGER */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 10;
+    }
 
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    .logo {
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
 
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Inter', sans-serif;
-            color: #333;
-        }
+    .hamburger {
+      cursor: pointer;
+      width: 30px;
+      height: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
 
-        /* NAVIGATION BAR */
-        nav {
-            width: 100%;
-            background: #ffffff;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: flex-end;
-            gap: 25px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 10;
-        }
+    .hamburger span {
+      height: 4px;
+      background: black;
+      border-radius: 3px;
+      display: block;
+    }
 
-        nav a {
-            text-decoration: none;
-            color: #444;
-            font-weight: 600;
-        }
+    /* SIDE MENU */
+    nav {
+      position: fixed;
+      top: 0;
+      right: -250px;
+      width: 250px;
+      height: 100%;
+      background: white;
+      box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+      transition: right 0.3s ease;
+      padding-top: 80px;
+      z-index: 9;
+    }
 
-        /* SPLIT SCREEN LAYOUT */
-        .split-container {
-            display: flex;
-            height: 100vh;
-            margin-top: 60px; /* space for navbar */
-        }
+    nav.open {
+      right: 0;
+    }
 
-        /* LEFT SIDE PHOTO */
-        .left-img {
-            flex: 1;
-            background-size: cover;
-            background-position: center;
-        }
+    nav a {
+      display: block;
+      padding: 15px 20px;
+      text-decoration: none;
+      color: black;
+      font-size: 1.2rem;
+      border-bottom: 1px solid #eee;
+    }
 
-        /* RIGHT SIDE TEXT */
-        .right-text {
-            flex: 1;
-            padding: 60px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
+    /* MAIN LAYOUT */
+    .container {
+      display: flex;
+      height: 100vh;
+      padding-top: 70px;
+    }
 
-        .right-text h1 {
-            font-size: 48px;
-            margin: 0;
-            margin-bottom: 10px;
-        }
+    .left-image {
+      width: 50%;
+      background-size: cover;
+      background-position: center;
+    }
 
-        .right-text p {
-            font-size: 20px;
-            margin: 0;
-            margin-bottom: 25px;
-            max-width: 500px;
-        }
+    .right-text {
+      width: 50%;
+      padding: 60px;
+      overflow-y: auto;
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
 
-        /* SOCIAL ICONS */
-        .social-icons {
-            margin-top: 20px;
-        }
+    /* SOCIAL ICONS */
+    .social-icons {
+      margin-top: 30px;
+    }
 
-        .social-icons a {
-            color: #444;
-            font-size: 28px;
-            margin-right: 15px;
-            transition: 0.3s;
-        }
+    .social-icons img {
+      width: 30px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
 
-        .social-icons a:hover {
-            color: #ff4bb5;
-            transform: scale(1.15);
-        }
-
-        /* MOBILE VERSION */
-        @media (max-width: 900px) {
-            .split-container {
-                flex-direction: column;
-                height: auto;
-            }
-            .left-img {
-                height: 60vh;
-            }
-            .right-text {
-                padding: 30px;
-            }
-            .right-text h1 {
-                font-size: 32px;
-            }
-        }
-    </style>
+    @media(max-width: 900px) {
+      .container {
+        flex-direction: column;
+      }
+      .left-image, .right-text {
+        width: 100%;
+        height: auto;
+      }
+      .right-text {
+        padding: 30px;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-    <!-- NAVBAR -->
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="music.html">Music</a>
-        <a href="contact.html">Contact</a>
-    </nav>
-
-    <!-- MAIN SPLIT LAYOUT -->
-    <div class="split-container">
-
-        <!-- LEFT PHOTO -->
-        <div class="left-img" style="background-image: url('1960668241.jpg');"></div>
-
-        <!-- RIGHT TEXT -->
-        <div class="right-text">
-            <h1>Kristin Plater</h1>
-            <p>Singer • Songwriter • Acoustic Guitar Player</p>
-
-            <!-- SOCIAL ICONS -->
-            <div class="social-icons">
-                <a href="https://www.youtube.com/@kristinplater" target="_blank"><i class="fab fa-youtube"></i></a>
-                <a href="https://www.facebook.com/singingkristin/events" target="_blank"><i class="fab fa-facebook"></i></a>
-                <a href="https://www.instagram.com/orlarescuedoodle/" target="_blank"><i class="fab fa-instagram"></i></a>
-            </div>
-        </div>
-
+  <header>
+    <div class="logo">Kristin Plater</div>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
+  </header>
+
+  <nav id="sideMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <div class="container">
+    <div class="left-image" style="background-image:url('1805805841.jpg');"></div>
+    <div class="right-text">
+      <h1>Welcome</h1>
+      <p>
+        This is placeholder text. Replace with your actual Weebly content.
+      </p>
+
+      <div class="social-icons">
+        <img src="facebook.png" alt="Facebook" />
+        <img src="instagram.png" alt="Instagram" />
+        <img src="twitter.png" alt="Twitter" />
+      </div>
+    </div>
+  </div>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('sideMenu').classList.toggle('open');
+  }
+</script>
 
 </body>
 </html>
