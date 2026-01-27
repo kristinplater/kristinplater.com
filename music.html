@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Music | Kristin Plater</title>
+
+  <!-- Font Awesome (standard social icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+      z-index: 1000;
+      padding: 12px 16px;
+    }
+
+    .header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .hamburger {
+      font-size: 26px;
+      cursor: pointer;
+      line-height: 1;
+      border: none;
+      background: transparent;
+      padding: 6px 8px;
+    }
+
+    .title-wrap {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .site-title {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .site-subtitle {
+      font-size: 13px;
+      color: #444;
+      margin-top: 2px;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .social-icons {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-shrink: 0;
+    }
+
+    .social-icons a {
+      color: #333;
+      font-size: 20px;
+      text-decoration: none;
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    .social-icons a:hover {
+      color: #ff4bb5;
+      transform: scale(1.12);
+    }
+
+    /* SLIDE-OUT MENU */
+    nav#menu {
+      position: fixed;
+      top: 0;
+      left: -260px;
+      width: 260px;
+      height: 100%;
+      background: #fff;
+      border-right: 1px solid #ddd;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.12);
+      padding-top: 72px;
+      transition: left 0.25s ease;
+      z-index: 999;
+    }
+
+    nav#menu.open { left: 0; }
+
+    nav#menu a {
+      display: block;
+      padding: 14px 18px;
+      color: #222;
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 1px solid #f1f1f1;
+    }
+
+    nav#menu a:hover { background: #f7f7f7; }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.35);
+      display: none;
+      z-index: 998;
+    }
+    .overlay.show { display: block; }
+
+    /* SPLIT LAYOUT (Weebly-style) */
+    .split-container {
+      display: flex;
+      margin-top: 84px;               /* space for fixed header */
+      min-height: calc(100vh - 84px); /* fill screen below header */
+    }
+
+    /* LEFT SIDE IMAGE: full height */
+    .left-img {
+      flex: 1;
+      background-image: url('811164921.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: calc(100vh - 84px);
+    }
+
+    /* RIGHT SIDE CONTENT */
+    .right-content {
+      flex: 1;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 18px;
+    }
+
+    .page-title {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    /* Smaller photo above the video */
+    .top-photo {
+      width: 100%;
+      max-width: 420px;   /* keeps it “smaller” on desktop */
+      border-radius: 10px;
+      height: auto;
+    }
+
+    /* Responsive YouTube embed */
+    .video-wrap {
+      width: 100%;
+      max-width: 720px;
+    }
+
+    .video-responsive {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 */
+      border-radius: 10px;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .video-responsive iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* MOBILE: stack */
+    @media (max-width: 900px) {
+      .site-subtitle { display: none; }
+
+      .split-container {
+        flex-direction: column;
+        min-height: auto;
+      }
+
+      .left-img {
+        min-height: 45vh;
+      }
+
+      .right-content {
+        padding: 22px 16px;
+      }
+
+      .page-title {
+        font-size: 24px;
+      }
+
+      .top-photo {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Slide-out menu -->
+  <nav id="menu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="music.html">Music</a>
+    <!-- Remove if you don't have contact.html yet -->
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <!-- Overlay -->
+  <div id="overlay" class="overlay" onclick="toggleMenu(false)"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="header-row">
+      <div class="header-left">
+        <button class="hamburger" aria-label="Open menu" onclick="toggleMenu()">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <div class="title-wrap">
+          <div class="site-title">Kristin Plater</div>
+          <div class="site-subtitle">Singer / Songwriter / Acoustic Guitar Player</div>
+        </div>
+      </div>
+
+      <div class="social-icons">
+        <a href="https://www.youtube.com/@kristinplater" target="_blank" aria-label="YouTube">
+          <i class="fa-brands fa-youtube"></i>
+        </a>
+        <a href="https://www.facebook.com/singingkristin/events" target="_blank" aria-label="Facebook">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        <a href="https://www.instagram.com/orlarescuedoodle/" target="_blank" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Split layout -->
+  <div class="split-container">
+
+    <!-- Left image -->
+    <div class="left-img" aria-label="Kristin photo background"></div>
+
+    <!-- Right content -->
+    <div class="right-content">
+      <h1 class="page-title">Music</h1>
+
+      <!-- Smaller photo above the video -->
+      <img class="top-photo" src="sing-heart-out_orig.jpg" alt="Sing Heart Out">
+
+      <!-- YouTube embed -->
+      <div class="video-wrap">
+        <div class="video-responsive">
+          <!-- Using YouTube embed URL for hNrRE8P3uqc -->
+          <iframe
+            src="https://www.youtube.com/embed/hNrRE8P3uqc"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function toggleMenu(force) {
+      const menu = document.getElementById('menu');
+      const overlay = document.getElementById('overlay');
+      const shouldOpen = (typeof force === 'boolean') ? force : !menu.classList.contains('open');
+      menu.classList.toggle('open', shouldOpen);
+      overlay.classList.toggle('show', shouldOpen);
+    }
+  </script>
+
+</body>
+</html>
