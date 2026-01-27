@@ -3,18 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
- <h1 class="page-title">Come Sing With Me!</h1>
+  <title>Come Sing With Me! | Kristin Plater</title>
 
-<a href="https://www.facebook.com/singingkristin/events"
-   target="_blank"
-   style="font-weight:600; text-decoration:none; color:#333;">
-  Click here for upcoming performances!
-</a>
-
-<img class="top-photo" src="sing-heart-out_orig.jpg" alt="Sing Heart Out">
-
-
-  <!-- Font Awesome (standard social icons) -->
+  <!-- Font Awesome (standard social icons + hamburger icon) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
@@ -27,7 +18,7 @@
       line-height: 1.6;
     }
 
-    /* HEADER */
+    /* ---------------- HEADER ---------------- */
     header {
       position: fixed;
       top: 0;
@@ -60,6 +51,7 @@
       border: none;
       background: transparent;
       padding: 6px 8px;
+      color: #333;
     }
 
     .title-wrap {
@@ -106,7 +98,7 @@
       transform: scale(1.12);
     }
 
-    /* SLIDE-OUT MENU */
+    /* ---------------- SLIDE-OUT MENU ---------------- */
     nav#menu {
       position: fixed;
       top: 0;
@@ -116,7 +108,7 @@
       background: #fff;
       border-right: 1px solid #ddd;
       box-shadow: 2px 0 10px rgba(0,0,0,0.12);
-      padding-top: 72px;
+      padding-top: 72px; /* space under header */
       transition: left 0.25s ease;
       z-index: 999;
     }
@@ -134,23 +126,24 @@
 
     nav#menu a:hover { background: #f7f7f7; }
 
-    .overlay {
+    /* Overlay dims page when menu is open */
+    #overlay {
       position: fixed;
       inset: 0;
       background: rgba(0,0,0,0.35);
       display: none;
       z-index: 998;
     }
-    .overlay.show { display: block; }
+    #overlay.show { display: block; }
 
-    /* SPLIT LAYOUT */
+    /* ---------------- SPLIT LAYOUT ---------------- */
     .split-container {
       display: flex;
       margin-top: 84px;               /* space for fixed header */
       min-height: calc(100vh - 84px); /* fill screen below header */
     }
 
-    /* LEFT: full height image */
+    /* Left side image */
     .left-img {
       flex: 1;
       background-image: url('811164921.jpg');
@@ -160,7 +153,7 @@
       min-height: calc(100vh - 84px);
     }
 
-    /* RIGHT: centered Weebly-like content panel */
+    /* Right side centered content (Weebly-like) */
     .right-content {
       flex: 1;
       padding: 28px 24px;
@@ -168,18 +161,16 @@
       flex-direction: column;
       justify-content: center;  /* center vertically */
       align-items: center;      /* center horizontally */
-      text-align: center;       /* center text */
-      gap: 18px;
+      text-align: center;
     }
 
-    /* Gives a consistent “content column” feel like Weebly */
     .right-inner {
       width: 100%;
-      max-width: 620px;  /* controls how wide the content column is */
+      max-width: 620px;   /* keeps a clean Weebly column */
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 18px;
+      gap: 16px;
     }
 
     .page-title {
@@ -188,18 +179,30 @@
       font-weight: 700;
     }
 
-    /* Small photo above video */
+    /* Performances link (above photo) */
+    .events-link {
+      font-weight: 700;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .events-link:hover {
+      text-decoration: underline;
+      color: #ff4bb5;
+    }
+
+    /* Smaller photo above video */
     .top-photo {
       width: 100%;
-      max-width: 420px;  /* smaller image, centered */
+      max-width: 420px;
       border-radius: 10px;
       height: auto;
     }
 
-    /* Smaller Weebly-like embedded video size */
+    /* Smaller YouTube embed (desktop) */
     .video-wrap {
       width: 100%;
-      max-width: 560px;  /* smaller desktop width */
+      max-width: 560px;
     }
 
     .video-responsive {
@@ -219,7 +222,7 @@
       border: 0;
     }
 
-    /* MOBILE: stack */
+    /* ---------------- MOBILE ---------------- */
     @media (max-width: 900px) {
       .site-subtitle { display: none; }
 
@@ -234,7 +237,7 @@
 
       .right-content {
         padding: 22px 16px;
-        justify-content: flex-start; /* feels more natural on phones */
+        justify-content: flex-start;
       }
 
       .page-title {
@@ -242,7 +245,7 @@
       }
 
       .video-wrap {
-        max-width: 100%; /* full width on mobile */
+        max-width: 100%;
       }
     }
   </style>
@@ -251,15 +254,16 @@
 <body>
 
   <!-- Slide-out menu -->
-  <nav id="menu">
+  <nav id="menu" aria-label="Site navigation">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="music.html">Music</a>
+    <!-- If you don't have contact.html yet, remove this link -->
     <a href="contact.html">Contact</a>
   </nav>
 
-  <!-- Overlay -->
-  <div id="overlay" class="overlay" onclick="toggleMenu(false)"></div>
+  <!-- Overlay (click to close menu) -->
+  <div id="overlay" onclick="closeMenu()"></div>
 
   <!-- Header -->
   <header>
@@ -291,23 +295,26 @@
 
   <!-- Split layout -->
   <div class="split-container">
-
-    <!-- Left image -->
     <div class="left-img" aria-label="Kristin photo background"></div>
 
-    <!-- Right content -->
     <div class="right-content">
       <div class="right-inner">
-        <h1 class="page-title">Music</h1>
 
-       
+        <h1 class="page-title">Come Sing With Me!</h1>
 
-        <!-- YouTube embed (smaller & centered) -->
+        <a class="events-link"
+           href="https://www.facebook.com/singingkristin/events"
+           target="_blank">
+          Click here for upcoming performances!
+        </a>
+
+        <img class="top-photo" src="sing-heart-out_orig.jpg" alt="Sing Heart Out">
+
         <div class="video-wrap">
           <div class="video-responsive">
             <iframe
               src="https://www.youtube.com/embed/hNrRE8P3uqc"
-              title="YouTube video player"
+              title="Come Sing With Me! video"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen>
             </iframe>
@@ -316,12 +323,38 @@
 
       </div>
     </div>
-
   </div>
 
   <script>
-    function toggleMenu(force) {
+    function openMenu() {
+      document.getElementById('menu').classList.add('open');
+      document.getElementById('overlay').classList.add('show');
+    }
+
+    function closeMenu() {
+      document.getElementById('menu').classList.remove('open');
+      document.getElementById('overlay').classList.remove('show');
+    }
+
+    function toggleMenu() {
       const menu = document.getElementById('menu');
-      const overlay = document.getElementById('overlay');
-      const shouldOpen = (typeof force === 'boolean') ? force : !men
-::contentReference[oaicite:0]{index=0}
+      if (menu.classList.contains('open')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    }
+
+    // Close menu on Escape key (nice usability, Weebly-like)
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeMenu();
+    });
+
+    // Close menu when clicking a menu link (mobile-friendly)
+    document.querySelectorAll('#menu a').forEach(a => {
+      a.addEventListener('click', closeMenu);
+    });
+  </script>
+
+</body>
+</html>
