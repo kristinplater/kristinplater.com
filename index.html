@@ -1,147 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kristin Plater</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kristin Plater</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
+  <!-- Font Awesome (standard social icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-        /* HEADER */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px;
-            background: white;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            border-bottom: 1px solid #ddd;
-        }
+  <style>
+    * { box-sizing: border-box; } /* prevents header overflow issues */
 
-        .header-left {
-            display: flex;
-            flex-direction: column;
-        }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #333;
+    }
 
-        .site-title {
-            font-size: 22px;
-            font-weight: bold;
-        }
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+      z-index: 1000;
+      padding: 12px 16px;
+    }
 
-        .site-subtitle {
-            font-size: 14px;
-            color: #444;
-        }
+    .header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
 
-        .social-icons a {
-            font-size: 22px;
-            margin-left: 12px;
-            text-decoration: none;
-        }
+    /* LEFT GROUP: hamburger + title/subtitle */
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0; /* allows text to shrink without pushing items off-screen */
+    }
 
-        .hamburger {
-            font-size: 28px;
-            cursor: pointer;
-            margin-left: 20px;
-        }
+    .hamburger {
+      font-size: 26px;
+      cursor: pointer;
+      line-height: 1;
+      border: none;
+      background: transparent;
+      padding: 6px 8px;
+    }
 
-        nav#menu {
-            display: none;
-            position: absolute;
-            top: 60px;
-            right: 15px;
-            background: white;
-            width: 200px;
-            border: 1px solid #ddd;
-            padding: 10px;
-        }
-        nav#menu a {
-            display: block;
-            padding: 10px;
-            text-decoration: none;
-        }
-        nav#menu a:hover {
-            background: #eee;
-        }
+    .title-wrap {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
 
-        /* MAIN LAYOUT */
-        .content {
-            display: flex;
-            margin-top: 90px;
-            padding: 20px;
-            gap: 20px;
-        }
+    .site-title {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
-        .content img {
-            width: 45%;
-            height: auto;
-            border-radius: 10px;
-        }
+    .site-subtitle {
+      font-size: 13px;
+      color: #444;
+      margin-top: 2px;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
-        .text-block {
-            width: 55%;
-        }
+    /* RIGHT GROUP: social icons */
+    .social-icons {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-shrink: 0;
+    }
 
-        @media(max-width: 768px) {
-            .content {
-                flex-direction: column;
-            }
-            .content img,
-            .text-block {
-                width: 100%;
-            }
-        }
-    </style>
+    .social-icons a {
+      color: #333;
+      font-size: 20px;
+      text-decoration: none;
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    .social-icons a:hover {
+      color: #ff4bb5;
+      transform: scale(1.12);
+    }
+
+    /* SLIDE-OUT MENU */
+    nav#menu {
+      position: fixed;
+      top: 0;
+      left: -260px;
+      width: 260px;
+      height: 100%;
+      background: #fff;
+      border-right: 1px solid #ddd;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.12);
+      padding-top: 72px; /* space under header */
+      transition: left 0.25s ease;
+      z-index: 999;
+    }
+
+    nav#menu.open {
+      left: 0;
+    }
+
+    nav#menu a {
+      display: block;
+      padding: 14px 18px;
+      color: #222;
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 1px solid #f1f1f1;
+    }
+
+    nav#menu a:hover {
+      background: #f7f7f7;
+    }
+
+    /* Optional dim overlay when menu is open */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.35);
+      display: none;
+      z-index: 998;
+    }
+
+    .overlay.show {
+      display: block;
+    }
+
+    /* MAIN SPLIT LAYOUT */
+    .content {
+      display: flex;
+      gap: 24px;
+      padding: 24px;
+      margin-top: 84px; /* header height spacing */
+      min-height: calc(100vh - 84px);
+    }
+
+    .content img {
+      width: 48%;
+      height: auto;
+      border-radius: 10px;
+      object-fit: cover;
+      align-self: flex-start;
+    }
+
+    .text-block {
+      width: 52%;
+    }
+
+    .text-block h2 {
+      margin-top: 0;
+    }
+
+    /* MOBILE */
+    @media (max-width: 900px) {
+      .content {
+        flex-direction: column;
+      }
+
+      .content img,
+      .text-block {
+        width: 100%;
+      }
+
+      .site-subtitle {
+        display: none; /* matches many Weebly mobile headers (optional) */
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-    <div class="header-left">
-        <div class="site-title">Kristin Plater</div>
-        <div class="site-subtitle">Singer / Songwriter / Acoustic Guitar Player</div>
+  <!-- Slide-out menu -->
+  <nav id="menu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="music.html">Music</a>
+    <!-- If you don't have contact.html yet, remove this link -->
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <!-- Optional overlay -->
+  <div id="overlay" class="overlay" onclick="toggleMenu(false)"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="header-row">
+
+      <div class="header-left">
+        <!-- Hamburger on LEFT of title (Weebly-style) -->
+        <button class="hamburger" aria-label="Open menu" onclick="toggleMenu()">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <div class="title-wrap">
+          <div class="site-title">Kristin Plater</div>
+          <div class="site-subtitle">Singer / Songwriter / Acoustic Guitar Player</div>
+        </div>
+      </div>
+
+      <!-- Standard social icons -->
+      <div class="social-icons">
+        <a href="https://www.youtube.com/@kristinplater" target="_blank" aria-label="YouTube">
+          <i class="fa-brands fa-youtube"></i>
+        </a>
+        <a href="https://www.facebook.com/singingkristin/events" target="_blank" aria-label="Facebook">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        <a href="https://www.instagram.com/orlarescuedoodle/" target="_blank" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+      </div>
+
     </div>
+  </header>
 
-    <div class="social-icons">
-        <a href="https://www.youtube.com" target="_blank">🎵</a>
-        <a href="https://www.instagram.com" target="_blank">📸</a>
-        <a href="https://www.facebook.com" target="_blank">👍</a>
-    </div>
-
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
-
-    <nav id="menu">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="music.html">Music</a>
-        <a href="contact.html">Contact</a>
-    </nav>
-</header>
-
-<div class="content">
-    <img src="1805805841.jpg" alt="Kristin Photo" />
+  <!-- Page content -->
+  <div class="content">
+    <img src="1960668241.jpg" alt="Kristin Plater photo" /> 
 
     <div class="text-block">
-        <h2>Welcome</h2>
-        <p>Based in San Diego, CA, Kristin Plater (Play-ter) is a singer/songwriter/acoustic guitar player whose stunning voice has garnered comparisons to Pink, Sheryl Crow, Kelly Clarkson, and Patti Griffin.</p>
-        <p>Kristin was a finalist for the coveted Lilith Fair showcase in Detroit, the first place winner of the Michigan State University talent contest, a finalist in the Pantene Pro-Voice contest, and a runner up in Gibson's The Way I Am competition judged by Ingrid Michaelson.</p>
-        <p>Her rousing live performances charm her audience into rapt attention from first to last note.</p>
+      <h2>Welcome</h2>
+      <p>
+        Based in San Diego, CA, Kristin Plater (Play-ter) is a singer/songwriter/acoustic guitar player whose stunning voice has garnered comparisons to Pink, Sheryl Crow, Kelly Clarkson, and Patti Griffin.
+      </p>
+      <p>
+        Kristin was a finalist for the coveted Lilith Fair showcase in Detroit, the first place winner of the Michigan State University talent contest, a finalist in the Pantene Pro-Voice contest, and a runner up in Gibson's The Way I Am competition judged by Ingrid Michaelson.
+      </p>
+      <p>
+        Her rousing live performances charm her audience into rapt attention from first to last note.
+      </p>
     </div>
-</div>
+  </div>
 
-<script>
-function toggleMenu() {
-    const menu = document.getElementById("menu");
-    menu.style.display = (menu.style.display === "block") ? "none" : "block";
-}
-</script>
+  <script>
+    function toggleMenu(force) {
+      const menu = document.getElementById('menu');
+      const overlay = document.getElementById('overlay');
+
+      const shouldOpen = (typeof force === 'boolean') ? force : !menu.classList.contains('open');
+      menu.classList.toggle('open', shouldOpen);
+      overlay.classList.toggle('show', shouldOpen);
+    }
+  </script>
 
 </body>
 </html>
