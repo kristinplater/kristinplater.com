@@ -134,14 +134,14 @@
     }
     .overlay.show { display: block; }
 
-    /* SPLIT LAYOUT (Weebly-style) */
+    /* SPLIT LAYOUT */
     .split-container {
       display: flex;
       margin-top: 84px;               /* space for fixed header */
       min-height: calc(100vh - 84px); /* fill screen below header */
     }
 
-    /* LEFT SIDE IMAGE: full height */
+    /* LEFT: full height image */
     .left-img {
       flex: 1;
       background-image: url('811164921.jpg');
@@ -151,13 +151,25 @@
       min-height: calc(100vh - 84px);
     }
 
-    /* RIGHT SIDE CONTENT */
+    /* RIGHT: centered Weebly-like content panel */
     .right-content {
       flex: 1;
       padding: 28px 24px;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
+      justify-content: center;  /* center vertically */
+      align-items: center;      /* center horizontally */
+      text-align: center;       /* center text */
+      gap: 18px;
+    }
+
+    /* Gives a consistent “content column” feel like Weebly */
+    .right-inner {
+      width: 100%;
+      max-width: 620px;  /* controls how wide the content column is */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       gap: 18px;
     }
 
@@ -167,18 +179,18 @@
       font-weight: 700;
     }
 
-    /* Smaller photo above the video */
+    /* Small photo above video */
     .top-photo {
       width: 100%;
-      max-width: 420px;   /* keeps it “smaller” on desktop */
+      max-width: 420px;  /* smaller image, centered */
       border-radius: 10px;
       height: auto;
     }
 
-    /* Responsive YouTube embed */
+    /* Smaller Weebly-like embedded video size */
     .video-wrap {
       width: 100%;
-      max-width: 720px;
+      max-width: 560px;  /* smaller desktop width */
     }
 
     .video-responsive {
@@ -213,14 +225,15 @@
 
       .right-content {
         padding: 22px 16px;
+        justify-content: flex-start; /* feels more natural on phones */
       }
 
       .page-title {
         font-size: 24px;
       }
 
-      .top-photo {
-        max-width: 100%;
+      .video-wrap {
+        max-width: 100%; /* full width on mobile */
       }
     }
   </style>
@@ -233,7 +246,6 @@
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="music.html">Music</a>
-    <!-- Remove if you don't have contact.html yet -->
     <a href="contact.html">Contact</a>
   </nav>
 
@@ -276,36 +288,32 @@
 
     <!-- Right content -->
     <div class="right-content">
-      <h1 class="page-title">Music</h1>
+      <div class="right-inner">
+        <h1 class="page-title">Music</h1>
 
-      <!-- Smaller photo above the video -->
-      <img class="top-photo" src="sing-heart-out_orig.jpg" alt="Sing Heart Out">
+        <!-- Smaller photo above the video -->
+        <img class="top-photo" src="sing-heart-out_orig.jpg" alt="Sing Heart Out">
 
-      <!-- YouTube embed -->
-      <div class="video-wrap">
-        <div class="video-responsive">
-          <!-- Using YouTube embed URL for hNrRE8P3uqc -->
-          <iframe
-            src="https://www.youtube.com/embed/hNrRE8P3uqc"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
+        <!-- YouTube embed (smaller & centered) -->
+        <div class="video-wrap">
+          <div class="video-responsive">
+            <iframe
+              src="https://www.youtube.com/embed/hNrRE8P3uqc"
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+          </div>
         </div>
-      </div>
 
+      </div>
     </div>
+
   </div>
 
   <script>
     function toggleMenu(force) {
       const menu = document.getElementById('menu');
       const overlay = document.getElementById('overlay');
-      const shouldOpen = (typeof force === 'boolean') ? force : !menu.classList.contains('open');
-      menu.classList.toggle('open', shouldOpen);
-      overlay.classList.toggle('show', shouldOpen);
-    }
-  </script>
-
-</body>
-</html>
+      const shouldOpen = (typeof force === 'boolean') ? force : !men
+::contentReference[oaicite:0]{index=0}
