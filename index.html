@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    * { box-sizing: border-box; } /* prevents header overflow issues */
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -37,12 +37,11 @@
       gap: 12px;
     }
 
-    /* LEFT GROUP: hamburger + title/subtitle */
     .header-left {
       display: flex;
       align-items: center;
       gap: 12px;
-      min-width: 0; /* allows text to shrink without pushing items off-screen */
+      min-width: 0;
     }
 
     .hamburger {
@@ -80,7 +79,6 @@
       text-overflow: ellipsis;
     }
 
-    /* RIGHT GROUP: social icons */
     .social-icons {
       display: flex;
       align-items: center;
@@ -110,7 +108,7 @@
       background: #fff;
       border-right: 1px solid #ddd;
       box-shadow: 2px 0 10px rgba(0,0,0,0.12);
-      padding-top: 72px; /* space under header */
+      padding-top: 72px;
       transition: left 0.25s ease;
       z-index: 999;
     }
@@ -128,7 +126,7 @@
 
     nav#menu a:hover { background: #f7f7f7; }
 
-    /* Dim overlay when menu open */
+    /* Overlay */
     .overlay {
       position: fixed;
       inset: 0;
@@ -141,37 +139,28 @@
     /* -------- WEELY-STYLE SPLIT LAYOUT -------- */
     .split-container {
       display: flex;
-      margin-top: 84px;                /* below header */
-      min-height: calc(100vh - 84px);  /* full height below header */
+      margin-top: 84px;                /* space for header */
+      min-height: calc(100vh - 84px);  /* full height under header */
     }
 
-    /* LEFT: background image (Weebly style Option C-ish) */
+    /* OPTION C (CORRECT) — Weebly full-bleed, NOT extra zoomed */
     .left-img {
-  flex: 1;
-  background-image: url('1960668241.jpg');
-  background-repeat: no-repeat;
-  background-position: center top;
-  background-size: cover;
-  min-height: calc(100vh - 84px);
-}
-@media (min-width: 901px) {
-  .left-img { background-size: 110%; } /* try 105%–125% */
-}
-
-
-    /* Slightly adjust “zoom” feel on desktop only (subtle; change 110% to 105% if needed) */
-    @media (min-width: 901px) {
-      .left-img { background-size: 110%; }
+      flex: 1;
+      background-image: url('1960668241.jpg');
+      background-repeat: no-repeat;
+      background-position: center top; /* key part */
+      background-size: cover;          /* key part */
+      min-height: calc(100vh - 84px);
     }
 
-    /* RIGHT: content panel */
+    /* RIGHT SIDE CONTENT */
     .right-content {
       flex: 1;
       padding: 28px 24px;
       display: flex;
       justify-content: center;
       align-items: center;
-      text-align: center; /* center text like you asked */
+      text-align: center;
     }
 
     .right-inner {
@@ -196,7 +185,7 @@
       border-radius: 10px;
     }
 
-    /* MOBILE: stack image on top, content below */
+    /* MOBILE */
     @media (max-width: 900px) {
       .split-container { flex-direction: column; }
       .left-img { min-height: 45vh; }
@@ -213,7 +202,6 @@
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="music.html">Music</a>
-    <!-- Remove if you don't have contact.html yet -->
     <a href="contact.html">Contact</a>
   </nav>
 
@@ -223,6 +211,7 @@
   <!-- Header -->
   <header>
     <div class="header-row">
+
       <div class="header-left">
         <button class="hamburger" aria-label="Open menu" onclick="toggleMenu()">
           <i class="fa-solid fa-bars"></i>
@@ -245,6 +234,7 @@
           <i class="fa-brands fa-instagram"></i>
         </a>
       </div>
+
     </div>
   </header>
 
@@ -273,6 +263,7 @@
     function toggleMenu(force) {
       const menu = document.getElementById('menu');
       const overlay = document.getElementById('overlay');
+
       const shouldOpen = (typeof force === 'boolean') ? force : !menu.classList.contains('open');
       menu.classList.toggle('open', shouldOpen);
       overlay.classList.toggle('show', shouldOpen);
