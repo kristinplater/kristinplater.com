@@ -91,3 +91,57 @@
 
         @media(max-width: 768px) {
             .content {
+                flex-direction: column;
+            }
+            .content img,
+            .text-block {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-left">
+        <div class="site-title">Kristin Plater</div>
+        <div class="site-subtitle">Singer / Songwriter / Acoustic Guitar Player</div>
+    </div>
+
+    <div class="social-icons">
+        <a href="https://www.youtube.com" target="_blank">🎵</a>
+        <a href="https://www.instagram.com" target="_blank">📸</a>
+        <a href="https://www.facebook.com" target="_blank">👍</a>
+    </div>
+
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+
+    <nav id="menu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="music.html">Music</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<div class="content">
+    <img src="1805805841.jpg" alt="Kristin Photo" />
+
+    <div class="text-block">
+        <h2>Welcome</h2>
+        <p>Based in San Diego, CA, Kristin Plater (Play-ter) is a singer/songwriter/acoustic guitar player whose stunning voice has garnered comparisons to Pink, Sheryl Crow, Kelly Clarkson, and Patti Griffin.</p>
+        <p>Kristin was a finalist for the coveted Lilith Fair showcase in Detroit, the first place winner of the Michigan State University talent contest, a finalist in the Pantene Pro-Voice contest, and a runner up in Gibson's The Way I Am competition judged by Ingrid Michaelson.</p>
+        <p>Her rousing live performances charm her audience into rapt attention from first to last note.</p>
+    </div>
+</div>
+
+<script>
+function toggleMenu() {
+    const menu = document.getElementById("menu");
+    menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+</script>
+
+</body>
+</html>
