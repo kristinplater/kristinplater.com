@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Kristin Plater</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+/* HEADER */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: white;
+  border-bottom: 1px solid #ddd;
+  z-index: 1000;
+  padding: 12px 16px;
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hamburger {
+  font-size: 26px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.site-title { font-weight: 700; }
+.site-subtitle { font-size: 13px; color:#444; }
+
+.social-icons a {
+  color:#333;
+  font-size:20px;
+  margin-left:12px;
+}
+
+/* MENU */
+nav#menu {
+  position: fixed;
+  left:-260px;
+  top:0;
+  width:260px;
+  height:100%;
+  background:white;
+  border-right:1px solid #ddd;
+  padding-top:72px;
+  transition:.25s;
+}
+
+nav#menu.open { left:0; }
+
+nav#menu a {
+  display:block;
+  padding:14px 18px;
+  text-decoration:none;
+  color:#222;
+  font-weight:600;
+}
+
+/* OVERLAY */
+.overlay {
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.35);
+  display:none;
+}
+.overlay.show { display:block; }
+
+/* SPLIT */
+.split-container {
+  display:flex;
+  margin-top:84px;
+  min-height:calc(100vh - 84px);
+}
+
+.left-img {
+  flex:1;
+  background:url('1960668241.jpg') center top / cover no-repeat;
+}
+
+.right-content {
+  flex:1;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.form-wrap {
+  max-width:400px;
+  width:100%;
+  padding:20px;
+  text-align:center;
+}
+
+input, textarea {
+  width:100%;
+  padding:10px;
+  margin:10px 0;
+  border:1px solid #ccc;
+}
+
+button {
+  padding:10px 20px;
+  background:#333;
+  color:white;
+  border:none;
+  cursor:pointer;
+}
+
+@media(max-width:900px){
+.split-container{flex-direction:column;}
+.left-img{min-height:40vh;}
+.site-subtitle{display:none;}
+}
+</style>
+</head>
+
+<body>
+
+<nav id="menu">
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="music.html">Music</a>
+<a href="contact.html">Contact</a>
+</nav>
+
+<div id="overlay" class="overlay" onclick="toggleMenu(false)"></div>
+
+<header>
+<div class="header-row">
+<div class="header-left">
+<button class="hamburger" onclick="toggleMenu()">☰</button>
+<div>
+<div class="site-title">Kristin Plater</div>
+<div class="site-subtitle">Singer / Songwriter / Acoustic Guitar Player</div>
+</div>
+</div>
+
+<div class="social-icons">
+<a href="https://www.youtube.com/@kristinplater" target="_blank"><i class="fab fa-youtube"></i></a>
+<a href="https://www.facebook.com/singingkristin/events" target="_blank"><i class="fab fa-facebook-f"></i></a>
+<a href="https://www.instagram.com/orlarescuedoodle/" target="_blank"><i class="fab fa-instagram"></i></a>
+</div>
+</div>
+</header>
+
+<div class="split-container">
+<div class="left-img"></div>
+
+<div class="right-content">
+<div class="form-wrap">
+
+<h2>Contact Kristin</h2>
+
+<form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+
+<input type="text" name="name" placeholder="Your name" required>
+
+<input type="email" name="email" placeholder="Your email" required>
+
+<textarea name="message" rows="5" placeholder="Your message" required></textarea>
+
+<button type="submit">Send Message</button>
+
+</form>
+
+</div>
+</div>
+</div>
+
+<script>
+function toggleMenu(force){
+const menu=document.getElementById('menu');
+const overlay=document.getElementById('overlay');
+menu.classList.toggle('open');
+overlay.classList.toggle('show');
+}
+</script>
+
+</body>
+</html>
