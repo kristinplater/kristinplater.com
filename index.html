@@ -5,167 +5,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kristin Plater</title>
 
+    <!-- Simple font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-    <!-- Simple, clean, readable font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
         body {
             margin: 0;
             font-family: 'Inter', sans-serif;
-            background: #ffffff;
             color: #333;
-            line-height: 1.6;
-        }
-<!-- Example links in the main page -->
-<p style="text-align:center; margin-top:30px;">
-    <a href="about.html" style="color:#8a4fff; text-decoration:underline;">
-        About Kristin
-    </a> |
-    <a href="music.html" style="color:#8a4fff; text-decoration:underline;">
-        Listen to Kristin Plater's CD
-    </a>
-</p>
-
-/* HERO SPLIT LAYOUT */
-/* This section displays the photo on the left and text on the right */
-.hero-split {
-    display: flex;             /* side-by-side layout */
-    align-items: center;       /* vertically center text with image */
-    gap: 40px;                 /* space between image and text */
-    flex-wrap: wrap;           /* stacks on small screens */
-    padding: 40px 20px;
-}
-
-/* LEFT IMAGE */
-.hero-image img {
-    width: 450px;              /* bigger on desktop */
-    height: auto;              /* maintain aspect ratio */
-    border-radius: 12px;       /* rounded corners */
-    object-fit: cover;         /* cover styling */
-    flex-shrink: 0;            /* prevent shrinking on desktop */
-}
-
-/* RIGHT TEXT */
-.hero-text {
-    max-width: 500px;          /* limits text column width */
-}
-
-.hero-text h1 {
-    font-size: 42px;
-    margin: 0 0 10px 0;
-}
-
-.hero-text p {
-    font-size: 20px;
-    margin: 0;
-    opacity: 0.9;
-}
-
-/* MOBILE LAYOUT */
-@media (max-width: 700px) {
-    .hero-split {
-        flex-direction: column; /* stack image above text on phones */
-        align-items: center;
-        text-align: center;
-    }
-
-    .hero-image img {
-        width: 90%;             /* scale to most of screen */
-        max-width: 350px;       /* prevent image from being too large */
-    }
-}
-
-
-
-        /* COLOR PALETTE C */
-        :root {
-            --violet: #8a4fff;
-            --pink: #ff6ec7;
-            --softblue: #79a8ff;
-            --light: #ffffff;
-            --dark: #222222;
         }
 
-        header {
-            background: linear-gradient(135deg, var(--violet), var(--pink), var(--softblue));
-            color: white;
-            text-align: center;
-            padding: 80px 20px;
+        /* NAVIGATION BAR */
+        nav {
+            width: 100%;
+            background: #ffffff;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 25px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10;
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 42px;
+        nav a {
+            text-decoration: none;
+            color: #444;
             font-weight: 600;
         }
 
-        header p {
-            font-size: 18px;
-            margin-top: 10px;
-            opacity: 0.9;
+        /* SPLIT SCREEN LAYOUT */
+        .split-container {
+            display: flex;
+            height: 100vh;
+            margin-top: 60px; /* space for navbar */
         }
 
-        section {
-            padding: 60px 20px;
-            max-width: 900px;
-            margin: auto;
+        /* LEFT SIDE PHOTO */
+        .left-img {
+            flex: 1;
+            background-size: cover;
+            background-position: center;
         }
 
-        h2 {
-            font-size: 28px;
-            color: var(--violet);
-            margin-bottom: 15px;
+        /* RIGHT SIDE TEXT */
+        .right-text {
+            flex: 1;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
-        /* Photo Gallery */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 15px;
+        .right-text h1 {
+            font-size: 48px;
+            margin: 0;
+            margin-bottom: 10px;
         }
 
-        .gallery img {
-            width: 100%;
-            border-radius: 8px;
-            object-fit: cover;
+        .right-text p {
+            font-size: 20px;
+            margin: 0;
+            margin-bottom: 25px;
+            max-width: 500px;
         }
 
-        /* Social Icon bar */
+        /* SOCIAL ICONS */
         .social-icons {
-            text-align: center;
             margin-top: 20px;
         }
 
         .social-icons a {
-            color: #000;
-            font-size: 32px;
-            margin: 0 15px;
-            text-decoration: none;
-            transition: 0.3s ease;
+            color: #444;
+            font-size: 28px;
+            margin-right: 15px;
+            transition: 0.3s;
         }
 
         .social-icons a:hover {
-            color: #ff0000;
-            transform: scale(1.2);
+            color: #ff4bb5;
+            transform: scale(1.15);
         }
 
-        footer {
-            text-align: center;
-            padding: 30px 20px;
-            background: #f5f5f5;
-            color: #666;
-            font-size: 14px;
-        }
-
-        @media (max-width: 600px) {
-            header h1 {
-                font-size: 32px;
+        /* MOBILE VERSION */
+        @media (max-width: 900px) {
+            .split-container {
+                flex-direction: column;
+                height: auto;
             }
-            header p {
-                font-size: 16px;
+            .left-img {
+                height: 60vh;
+            }
+            .right-text {
+                padding: 30px;
+            }
+            .right-text h1 {
+                font-size: 32px;
             }
         }
     </style>
@@ -173,77 +113,34 @@
 
 <body>
 
- <!-- HERO WITH IMAGE ON LEFT + TEXT ON RIGHT -->
-<div class="hero-split">
-    <!-- IMAGE -->
-    <div class="hero-image">
-        <img src="1960668241.jpg" alt="Kristin Plater">
-    </div>
+    <!-- NAVBAR -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="music.html">Music</a>
+        <a href="contact.html">Contact</a>
+    </nav>
 
-    <!-- TEXT -->
-    <div class="hero-text">
-        <h1>Kristin Plater</h1>
-        <p>Singer • Songwriter • Acoustic Guitar</p>
-    </div>
-</div>
+    <!-- MAIN SPLIT LAYOUT -->
+    <div class="split-container">
 
+        <!-- LEFT PHOTO -->
+        <div class="left-img" style="background-image: url('1960668241.jpg');"></div>
 
+        <!-- RIGHT TEXT -->
+        <div class="right-text">
+            <h1>Kristin Plater</h1>
+            <p>Singer • Songwriter • Acoustic Guitar Player</p>
 
-
-    <section id="about">
-        <h2>About Kristin</h2>
-        <p>
-            Based in San Diego, CA, Kristin Plater (Play-ter) is a singer/songwriter/acoustic guitar player whose
-            stunning voice has garnered comparisons to Pink, Sheryl Crow, Kelly Clarkson, and Patti Griffin.
-            Kristin was a finalist for the coveted Lilith Fair showcase in Detroit, the first place winner 
-            of the Michigan State University talent contest, a finalist in the Pantene Pro-Voice contest,
-            and a runner up in Gibson's The Way I Am competition judged by Ingrid Michaelson.
-        </p>
-        <p>
-            From her album 24, Wonder Woman quickly made its way to the top of playlists on college radio stations 
-            across the nation. She is a rising YouTube sensation thanks to her song, Why Not, which inspires people 
-            worldwide to have fun all the time.
-        </p>
-        <p>
-            She has performed at colleges, bars, and coffeehouses all over the United States as well as in Europe 
-            and Australia and has had the honor of singing the national anthem for the Detroit Red Wings at Joe 
-            Louis Arena and for the Detroit Pistons at The Palace of Auburn Hills.
-        </p>
-        <p>
-            Kristin writes acoustic pop with gripping songs about having fun, being in love, and finding a place 
-            in this world. Her rousing live performances charm her audience into rapt attention from first to last 
-            note. A strong stage presence and commanding voice quickly elevate her above not only the pandemonium 
-            of a packed house, but also the deluge of other singer songwriters. 
-        </p>
-        <p>
-            She is a treasure trove of sounds, stories and humor, a musical explorer guiding her storytelling with 
-            an innate sense of wonder and purpose.
-        </p>
-    </section>
-
-    <section id="photos">
-        <h2>Photos</h2>
-        <div class="gallery">
-            <img src="https://via.placeholder.com/600x400?text=Photo+1" />
-            <img src="https://via.placeholder.com/600x400?text=Photo+2" />
-            <img src="https://via.placeholder.com/600x400?text=Photo+3" />
-        </div>
-    </section>
-
-    <section id="social">
-        <h2>Follow Kristin</h2>
-
-        <div class="social-icons">
-            <a href="https://www.youtube.com/@kristinplater" target="_blank"><i class="fab fa-youtube"></i></a>
-            <a href="https://www.facebook.com/singingkristin/events" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.instagram.com/orlarescuedoodle/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <!-- SOCIAL ICONS -->
+            <div class="social-icons">
+                <a href="https://www.youtube.com/@kristinplater" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.facebook.com/singingkristin/events" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/orlarescuedoodle/" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
         </div>
 
-    </section>
-
-    <footer>
-        © 2026 Kristin Plater — All Rights Reserved
-    </footer>
+    </div>
 
 </body>
 </html>
