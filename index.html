@@ -20,16 +20,54 @@
             line-height: 1.6;
         }
 
-        
-/* Make text centered under image on phones */
+/* HERO SPLIT LAYOUT */
+.hero-split {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 40px 20px;
+    gap: 30px;
+    flex-wrap: wrap; /* stacks on narrow screens */
+}
+
+/* Left image */
+.hero-image img {
+    width: 300px;      /* smaller width ensures side-by-side */
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+/* Right text */
+.hero-text {
+    max-width: 500px;  /* controls text width */
+}
+
+.hero-text h1 {
+    font-size: 42px;
+    margin: 0 0 10px 0;
+}
+
+.hero-text p {
+    font-size: 20px;
+    margin: 0;
+    opacity: 0.9;
+}
+
+/* MOBILE STACKING */
 @media (max-width: 700px) {
-    .hero-text {
-        text-align: center;
-    }
     .hero-split {
         flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-image img {
+        width: 80%;    /* smaller on phones */
+        max-width: 300px;
     }
 }
+
 
         /* COLOR PALETTE C */
         :root {
@@ -124,14 +162,17 @@
 
 <body>
 
-    <!-- HERO WITH SIDE-BY-SIDE LAYOUT -->
+   <!-- HERO WITH PHOTO ON LEFT + TEXT ON RIGHT -->
 <div class="hero-split">
-    <img src="1960668241.jpg" alt="Kristin Plater">
+    <div class="hero-image">
+        <img src="1960668241.jpg" alt="Kristin Plater">
+    </div>
     <div class="hero-text">
         <h1>Kristin Plater</h1>
         <p>Singer • Songwriter • Acoustic Guitar</p>
     </div>
 </div>
+
 
 
     <section id="about">
