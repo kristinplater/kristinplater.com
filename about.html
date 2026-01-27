@@ -1,210 +1,255 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About Kristin</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Kristin</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
+  <!-- Font Awesome (standard social icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-        /* HEADER (same as index) */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px;
-            background: white;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            border-bottom: 1px solid #ddd;
-        }
+  <style>
+    * { box-sizing: border-box; }
 
-        .header-left { display: flex; flex-direction: column; }
-        .site-title { font-size: 22px; font-weight: bold; }
-        .site-subtitle { font-size: 14px; color: #444; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #333;
+      line-height: 1.6;
+    }
 
-        .social-icons a {
-            font-size: 22px;
-            margin-left: 12px;
-            text-decoration: none;
-        }
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+      z-index: 1000;
+      padding: 12px 16px;
+    }
 
-        .hamburger {
-            font-size: 28px;
-            cursor: pointer;
-            margin-left: 20px;
-        }
+    .header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
 
-        nav#menu {
-            display: none;
-            position: absolute;
-            top: 60px;
-            right: 15px;
-            background: white;
-            width: 200px;
-            border: 1px solid #ddd;
-            padding: 10px;
-        }
-        nav#menu a {
-            display: block;
-            padding: 10px;
-            text-decoration: none;
-        }
-        nav#menu a:hover { background: #eee; }
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
 
-        /* PAGE CONTENT */
-        .content {
-            padding: 120px 20px;
-            max-width: 800px;
-            margin: auto;
-        }
+    .hamburger {
+      font-size: 26px;
+      cursor: pointer;
+      line-height: 1;
+      border: none;
+      background: transparent;
+      padding: 6px 8px;
+    }
 
-        img {
-            width: 100%;
-            max-width: 400px;
-            display: block;
-            margin: 0 auto 20px;
-            border-radius: 10px;
-        }
-    </style>
+    .title-wrap {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .site-title {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .site-subtitle {
+      font-size: 13px;
+      color: #444;
+      margin-top: 2px;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .social-icons {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-shrink: 0;
+    }
+
+    .social-icons a {
+      color: #333;
+      font-size: 20px;
+      text-decoration: none;
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    .social-icons a:hover {
+      color: #ff4bb5;
+      transform: scale(1.12);
+    }
+
+    /* SLIDE-OUT MENU */
+    nav#menu {
+      position: fixed;
+      top: 0;
+      left: -260px;
+      width: 260px;
+      height: 100%;
+      background: #fff;
+      border-right: 1px solid #ddd;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.12);
+      padding-top: 72px;
+      transition: left 0.25s ease;
+      z-index: 999;
+    }
+
+    nav#menu.open { left: 0; }
+
+    nav#menu a {
+      display: block;
+      padding: 14px 18px;
+      color: #222;
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 1px solid #f1f1f1;
+    }
+
+    nav#menu a:hover { background: #f7f7f7; }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.35);
+      display: none;
+      z-index: 998;
+    }
+    .overlay.show { display: block; }
+
+    /* PAGE CONTENT */
+    .content {
+      margin-top: 84px;
+      padding: 28px 20px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .about-wrap {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .about-wrap img {
+      width: 40%;
+      max-width: 360px;
+      height: auto;
+      border-radius: 10px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .about-text {
+      width: 60%;
+    }
+
+    .about-text h2 {
+      margin-top: 0;
+    }
+
+    @media (max-width: 900px) {
+      .site-subtitle { display: none; }
+      .about-wrap { flex-direction: column; }
+      .about-wrap img, .about-text { width: 100%; }
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-    <div class="header-left">
-        <div class="site-title">Kristin Plater</div>
-        <div class="site-subtitle">Singer / Songwriter / Acoustic Guitar Player</div>
+  <nav id="menu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="music.html">Music</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <div id="overlay" class="overlay" onclick="toggleMenu(false)"></div>
+
+  <header>
+    <div class="header-row">
+
+      <div class="header-left">
+        <button class="hamburger" aria-label="Open menu" onclick="toggleMenu()">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <div class="title-wrap">
+          <div class="site-title">Kristin Plater</div>
+          <div class="site-subtitle">Singer / Songwriter / Acoustic Guitar Player</div>
+        </div>
+      </div>
+
+      <div class="social-icons">
+        <a href="https://www.youtube.com/@kristinplater" target="_blank" aria-label="YouTube">
+          <i class="fa-brands fa-youtube"></i>
+        </a>
+        <a href="https://www.facebook.com/singingkristin/events" target="_blank" aria-label="Facebook">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        <a href="https://www.instagram.com/orlarescuedoodle/" target="_blank" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+      </div>
+
     </div>
+  </header>
 
-    <div class="social-icons">
-        <a href="https://www.youtube.com" target="_blank">🎵</a>
-        <a href="https://www.instagram.com" target="_blank">📸</a>
-        <a href="https://www.facebook.com" target="_blank">👍</a>
+  <div class="content">
+    <div class="about-wrap">
+      <!-- Choose any image you want here -->
+      <img src="1960668241.jpg" alt="Kristin Plater" />
+
+      <div class="about-text">
+        <h2>About Kristin</h2>
+
+        <p>
+          Based in San Diego, CA, Kristin Plater (Play-ter) is a singer/songwriter/acoustic guitar player whose stunning voice has garnered comparisons to Pink, Sheryl Crow, Kelly Clarkson, and Patti Griffin. Kristin was a finalist for the coveted Lilith Fair showcase in Detroit, the first place winner of the Michigan State University talent contest, a finalist in the Pantene Pro-Voice contest, and a runner up in Gibson's The Way I Am competition judged by Ingrid Michaelson.
+        </p>
+
+        <p>
+          From her album 24, Wonder Woman quickly made its way to the top of playlists on college radio stations across the nation. She is a rising YouTube sensation thanks to her song, Why Not, which inspires people worldwide to have fun all the time.
+        </p>
+
+        <p>
+          She has performed at colleges, bars, and coffeehouses all over the United States as well as in Europe and Australia and has had the honor of singing the national anthem for the Detroit Red Wings at Joe Louis Arena and for the Detroit Pistons at The Palace of Auburn Hills.
+        </p>
+
+        <p>
+          Kristin writes acoustic pop with gripping songs about having fun, being in love, and finding a place in this world. Her rousing live performances charm her audience into rapt attention from first to last note. A strong stage presence and commanding voice quickly elevate her above not only the pandemonium of a packed house, but also the deluge of other singer songwriters. She is a treasure trove of sounds, stories and humor, a musical explorer guiding her storytelling with an innate sense of wonder and purpose.
+        </p>
+      </div>
     </div>
+  </div>
 
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
-
-    <nav id="menu">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="music.html">Music</a>
-        <a href="contact.html">Contact</a>
-    </nav>
-</header>
-
-<div class="content">
-    <img src="24_orig.jpg" alt="Kristin Photo" />
-
-    <h2>About Kristin</h2>
-
-    <p>Based in San Diego, CA, Kristin Plater (Play-ter) is a singer/songwriter/acoustic guitar player whose stunning voice has garnered comparisons to Pink, Sheryl Crow, Kelly Clarkson, and Patti Griffin.</p>
-
-    <p>Kristin was a finalist for the coveted Lilith Fair showcase in Detroit, the first place winner of the Michigan State University talent contest, a finalist in the Pantene Pro-Voice contest, and a runner up in Gibson's The Way I Am competition judged by Ingrid Michaelson.</p>
-
-    <p>From her album 24, Wonder Woman quickly made its way to the top of playlists on college radio stations across the nation. She is a rising YouTube sensation thanks to her song, Why Not, which inspires people worldwide to have fun all the time.</p>
-
-    <p>She has performed all over the United States as well as in Europe and Australia and has had the honor of singing the national anthem for the Detroit Red Wings and the Detroit Pistons.</p>
-
-    <p>Kristin writes acoustic pop with gripping songs about having fun, being in love, and finding a place in this world.</p>
-
-</div>
-
-<script>
-function toggleMenu() {
-    const menu = document.getElementById("menu");
-    menu.style.display = (menu.style.display === "block") ? "none" : "block";
-}
-</script>
+  <script>
+    function toggleMenu(force) {
+      const menu = document.getElementById('menu');
+      const overlay = document.getElementById('overlay');
+      const shouldOpen = (typeof force === 'boolean') ? force : !menu.classList.contains('open');
+      menu.classList.toggle('open', shouldOpen);
+      overlay.classList.toggle('show', shouldOpen);
+    }
+  </script>
 
 </body>
 </html>
-<!DOCTYPE html> 
-<html lang="en">
-    <p style="text-align:center;">
-    <a href="about.html" style="color:#8a4fff; text-decoration:underline;">
-        About Kristin
-    </a>
-</p>
-
-<p style="text-align:center;">
-    <a href="music.html" style="color:#8a4fff; text-decoration:underline;">
-        Listen to Kristin Plater's CD
-    </a>
-</p>
-
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kristin Plater</title>
-
-<!-- Font Awesome for social icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<!-- Clean, readable font -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
-<style>
-/* -------------------- GENERAL STYLES -------------------- */
-body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background: #ffffff; /* soft white background */
-    color: #333;
-    line-height: 1.6;
-}
-
-/* -------------------- HERO SECTION -------------------- */
-.hero {
-    text-align: center;
-    padding: 80px 20px;
-    background: linear-gradient(135deg, #8a4fff, #ff6ec7, #79a8ff); /* soft gradient */
-    color: #fff;
-}
-
-.hero h1 {
-    font-size: 42px;
-    margin: 0 0 15px 0;
-}
-
-.hero p {
-    font-size: 20px;
-    margin: 0;
-    opacity: 0.9;
-}
-
-/* -------------------- ABOUT SECTION -------------------- */
-section#about {
-    max-width: 900px;
-    margin: auto;
-    padding: 60px 20px;
-    text-align: center; /* center text like Weebly */
-}
-
-section#about h2 {
-    font-size: 32px;
-    color: #8a4fff; /* match hero accent */
-    margin-bottom: 25px;
-}
-
-section#about p {
-    font-size: 18px;
-    margin-bottom: 15px;
-}
-
-/* -------------------- PHOTO GALLERY -------------------- */
-section#photos {
-    max-width: 1000px;
-    margin: auto;
-    padding: 60px 20px;
-}
-
-.gallery {
-    display: grid;
-    grid-template-columns: r
