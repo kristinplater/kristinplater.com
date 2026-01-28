@@ -153,7 +153,7 @@
       min-height: calc(100vh - 84px);
     }
 
-    /* If it feels too zoomed, change 110% to 100% or delete this block */
+    /* If it feels too zoomed, change 110% to 100% or remove this block */
     @media (min-width: 901px) {
       .left-img { background-size: 110%; }
     }
@@ -170,7 +170,7 @@
 
     .right-inner {
       width: 100%;
-      max-width: 700px;
+      max-width: 760px;
       display: flex;
       flex-direction: column;
       gap: 16px;
@@ -181,6 +181,7 @@
       font-size: 28px;
     }
 
+    /* SECTION TITLES */
     .section-title {
       font-size: 18px;
       font-weight: 800;
@@ -188,22 +189,26 @@
       text-align: left;
     }
 
-    /* REVIEW CARDS */
+    /* REVIEWS: Weebly-style two columns that FLOW nicely */
     .reviews-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* two columns */
-  gap: 18px;
-  margin-top: 6px;
-}
+      column-count: 2;
+      column-gap: 22px;
+      margin-top: 6px;
+      text-align: left;
+    }
 
-
+    /* Review card */
     .review {
       background: #fafafa;
       border: 1px solid #eee;
       border-radius: 14px;
       padding: 18px 20px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      text-align: left;
+      margin: 0 0 18px 0;        /* space between cards */
+      break-inside: avoid;       /* prevents cards splitting between columns */
+      display: inline-block;     /* helps column layout keep card box sizing */
+      width: 100%;
+      vertical-align: top;
     }
 
     .review:before {
@@ -212,7 +217,7 @@
       color: #ff4bb5;
       line-height: 0;
       display: block;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     .review p {
@@ -233,6 +238,10 @@
       .left-img { min-height: 45vh; }
       .right-content { padding: 22px 16px; }
       h1 { font-size: 24px; }
+
+      .reviews-grid {
+        column-count: 1; /* single column on mobile */
+      }
     }
   </style>
 </head>
