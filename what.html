@@ -1,99 +1,425 @@
-<div class="reviews-grid">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Kristin Plater</title>
 
-  <div class="review">
-    <p>
-      From the moment the B3 organ and Kristin Plater’s knock-you-on-your-butt voice kick out of the speakers at the top of the first track, you’re enraptured. By the time 24 closes, you’re ready to hit repeat. The masterful singing and hooky, infectious melodies on this record are absolutely undeniable.
-    </p>
-    <div class="source">— Performing Songwriter Magazine (Top 12 Picks)</div>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+      z-index: 1000;
+      padding: 12px 16px;
+    }
+
+    .header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .hamburger {
+      font-size: 26px;
+      cursor: pointer;
+      line-height: 1;
+      border: none;
+      background: transparent;
+      padding: 6px 8px;
+      color: #333;
+    }
+
+    .title-wrap {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .site-title {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .site-subtitle {
+      font-size: 13px;
+      color: #444;
+      margin-top: 2px;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .social-icons {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-shrink: 0;
+    }
+
+    .social-icons a {
+      color: #333;
+      font-size: 20px;
+      text-decoration: none;
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    .social-icons a:hover {
+      color: #ff4bb5;
+      transform: scale(1.12);
+    }
+
+    /* SLIDE-OUT MENU */
+    nav#menu {
+      position: fixed;
+      top: 0;
+      left: -260px;
+      width: 260px;
+      height: 100%;
+      background: #fff;
+      border-right: 1px solid #ddd;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.12);
+      padding-top: 72px;
+      transition: left 0.25s ease;
+      z-index: 999;
+    }
+
+    nav#menu.open { left: 0; }
+
+    nav#menu a {
+      display: block;
+      padding: 14px 18px;
+      color: #222;
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 1px solid #f1f1f1;
+    }
+
+    nav#menu a:hover { background: #f7f7f7; }
+
+    /* Overlay */
+    #overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.35);
+      display: none;
+      z-index: 998;
+    }
+    #overlay.show { display: block; }
+
+    /* SPLIT LAYOUT */
+    .split-container {
+      display: flex;
+      margin-top: 84px;
+      min-height: calc(100vh - 84px);
+    }
+
+    /* LEFT IMAGE (Weebly style) */
+    .left-img {
+      flex: 1;
+      background-image: url('2143026597.jpg');
+      background-repeat: no-repeat;
+      background-position: center top;
+      background-size: cover;
+      min-height: calc(100vh - 84px);
+    }
+
+    /* If it feels too zoomed, change 110% to 100% or delete this block */
+    @media (min-width: 901px) {
+      .left-img { background-size: 110%; }
+    }
+
+    /* RIGHT CONTENT */
+    .right-content {
+      flex: 1;
+      padding: 28px 24px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      text-align: center;
+    }
+
+    .right-inner {
+      width: 100%;
+      max-width: 700px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 800;
+      margin: 8px 0 0;
+      text-align: left;
+    }
+
+    /* REVIEW CARDS */
+    .reviews-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-top: 6px;
+    }
+
+    .review {
+      background: #fafafa;
+      border: 1px solid #eee;
+      border-radius: 14px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      text-align: left;
+    }
+
+    .review:before {
+      content: "“";
+      font-size: 40px;
+      color: #ff4bb5;
+      line-height: 0;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .review p {
+      margin: 0 0 10px 0;
+      line-height: 1.6;
+    }
+
+    .review .source {
+      font-weight: 800;
+      font-size: 14px;
+      color: #222;
+    }
+
+    /* MOBILE */
+    @media (max-width: 900px) {
+      .site-subtitle { display: none; }
+      .split-container { flex-direction: column; }
+      .left-img { min-height: 45vh; }
+      .right-content { padding: 22px 16px; }
+      h1 { font-size: 24px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Slide-out menu -->
+  <nav id="menu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="music.html">Music</a>
+    <a href="what.html">Say What?!</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <!-- Overlay -->
+  <div id="overlay" onclick="closeMenu()"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="header-row">
+
+      <div class="header-left">
+        <button class="hamburger" aria-label="Open menu" onclick="toggleMenu()">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <div class="title-wrap">
+          <div class="site-title">Kristin Plater</div>
+          <div class="site-subtitle">Singer / Songwriter / Acoustic Guitar Player</div>
+        </div>
+      </div>
+
+      <div class="social-icons">
+        <a href="https://www.youtube.com/@kristinplater" target="_blank" aria-label="YouTube">
+          <i class="fa-brands fa-youtube"></i>
+        </a>
+        <a href="https://www.facebook.com/singingkristin/events" target="_blank" aria-label="Facebook">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        <a href="https://www.instagram.com/orlarescuedoodle/" target="_blank" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Split layout -->
+  <div class="split-container">
+    <div class="left-img" aria-label="Kristin photo background"></div>
+
+    <div class="right-content">
+      <div class="right-inner">
+
+        <h1>About Kristin</h1>
+
+        <div class="section-title">Reviews of <em>24</em></div>
+
+        <div class="reviews-grid">
+
+          <div class="review">
+            <p>
+              From the moment the B3 organ and Kristin Plater’s knock-you-on-your-butt voice kick out of the speakers
+              at the top of the first track, you’re enraptured. By the time <em>24</em> closes, you’re ready to hit repeat.
+              The masterful singing and hooky, infectious melodies on this record are absolutely undeniable.
+            </p>
+            <div class="source">— Performing Songwriter Magazine (Top 12 Picks)</div>
+          </div>
+
+          <div class="review">
+            <p>
+              <em>24</em> is one of the best I have heard this year. “Wonder Woman” has meaningful lyrics that deserve to be heard.
+              Plater is too talented to ignore.
+            </p>
+            <div class="source">— Joel Edelman, Agouti.com</div>
+          </div>
+
+          <div class="review">
+            <p>
+              “Dancing Stars” cuts loose with as big, brassy, and ballsy a post-blues rock tune as anyone I’ve heard lately —
+              loaded with Hammond B-3, swooning guitar, and Plater’s huge, gorgeous voice. It wows.
+            </p>
+            <div class="source">— Bangsheet.com</div>
+          </div>
+
+          <div class="review">
+            <p>
+              Kristin Plater has made the kind of album that never wears you out… Musically, <em>24</em> provides enough variety
+              to keep one wondering what is around the next corner.
+            </p>
+            <div class="source">— Rod Moody, Titan Magazine</div>
+          </div>
+
+          <div class="review">
+            <p>
+              Plater is a standout due to her remarkable pipes and equally remarkable songwriting skills… There are no throwaway
+              songs to fast-forward past on <em>24</em>.
+            </p>
+            <div class="source">— C. D. Di Guardia, Northeast Performer Magazine</div>
+          </div>
+
+          <div class="review">
+            <p>
+              Kristin’s soulful brand of songwriting is similar to Natalie Merchant, Sheryl Crow, and Sarah McLachlan — fresh and real.
+              I get the sense that this is a feeling person singing about life and love, and not just a performer trying to sell a CD.
+            </p>
+            <div class="source">— Joel Simches, The Noise Magazine</div>
+          </div>
+
+          <div class="section-title">Other reviews</div>
+
+          <div class="review">
+            <p>
+              Plater rocked… she absolutely wowed the crowd. She has a tremendous voice and a clever way with lyrics.
+            </p>
+            <div class="source">— Sara Barss, Lancaster Times</div>
+          </div>
+
+          <div class="review">
+            <p>Anyone who has seen Kristin Plater play will be enamored by her music.</p>
+            <div class="source">— Etch Magazine</div>
+          </div>
+
+          <div class="review">
+            <p>Deeply emotional… weaving beautiful melodies and shining, optimistic lyrics.</p>
+            <div class="source">— Sam Rose, Etch Magazine</div>
+          </div>
+
+          <div class="review">
+            <p>…poised for success.</p>
+            <div class="source">— Ricardo Cooney, Lansing State Journal</div>
+          </div>
+
+          <div class="review">
+            <p>Evocative.</p>
+            <div class="source">— Lansing State Journal</div>
+          </div>
+
+          <div class="review">
+            <p>A lot of raw talent.</p>
+            <div class="source">— Bill Tenant, musician</div>
+          </div>
+
+          <div class="review">
+            <p>
+              What’s most striking about Kristin Plater’s live performances is her voice — a remarkable instrument capable of
+              absolutely captivating an audience. Powerful, gritty, and beautiful with terrific range.
+            </p>
+            <div class="source">— Mark Miazga, The Common Grounds Coffeehouse</div>
+          </div>
+
+          <div class="section-title">Email from fans</div>
+
+          <div class="review">
+            <p>
+              “I think you totally rock!”<br>
+              “I was so impressed with your music and your songwriting…”<br>
+              “The way you stepped back from the mike and carried those notes was awesome! WOW!”<br>
+              “Your songs are catchy, intelligent, and most importantly, come straight from the soul.”<br>
+              “Your cd came in the mail today. It came, it saw, it conquered.”<br>
+              “A National Treasure!!!”
+            </p>
+            <div class="source">— Fans</div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
   </div>
 
-  <div class="review">
-    <p>
-      Kristin Plater’s newest platter is one of the best I have heard this year. “Wonder Woman” has meaningful lyrics that deserve to be heard. Plater is too talented to ignore.
-    </p>
-    <div class="source">— Joel Edelman, Agouti.com</div>
-  </div>
+  <script>
+    const menu = document.getElementById('menu');
+    const overlay = document.getElementById('overlay');
 
-  <div class="review">
-    <p>
-      “Dancing Stars” cuts loose with as big, brassy, and ballsy a post-blues rock tune as anyone I’ve heard lately. Loaded with Hammond B-3, swooning guitar, and Plater’s huge, gorgeous voice. It wows.
-    </p>
-    <div class="source">— Bangsheet.com</div>
-  </div>
+    function openMenu() {
+      menu.classList.add('open');
+      overlay.classList.add('show');
+    }
+    function closeMenu() {
+      menu.classList.remove('open');
+      overlay.classList.remove('show');
+    }
+    function toggleMenu() {
+      menu.classList.contains('open') ? closeMenu() : openMenu();
+    }
+  </script>
 
-  <div class="review">
-    <p>
-      Kristin Plater has made the kind of album that never wears you out. She sings with enough emotion to make you feel as if you are living through her visions of complicated love and character study. Musically, 24 provides enough variety to keep one wondering what is around the next corner.
-    </p>
-    <div class="source">— Rod Moody, Titan Magazine</div>
-  </div>
-
-  <div class="review">
-    <p>
-      Plater exudes a vibrant presence on 24. There are no throwaway songs to fast-forward past. Kristin Plater could clearly carry the show through her vocal abilities alone, but she is also blessed with a knack for songwriting and storytelling.
-    </p>
-    <div class="source">— C. D. Di Guardia, Northeast Performer Magazine</div>
-  </div>
-
-  <div class="review">
-    <p>
-      Kristin’s soulful brand of songwriting is similar to Natalie Merchant, Sheryl Crow, and Sarah McLachlan. Kristin’s music sounds fresh and real — a feeling person singing about life and love, not just trying to sell a CD.
-    </p>
-    <div class="source">— Joel Simches, The Noise Magazine</div>
-  </div>
-
-  <div class="review">
-    <p>
-      Plater rocked. She absolutely wowed the crowd with vignettes of human existence. She has a tremendous voice and a clever way with lyrics.
-    </p>
-    <div class="source">— Sara Barss, Lancaster Times</div>
-  </div>
-
-  <div class="review">
-    <p>
-      Anyone who has seen Kristin Plater play will be enamored by her music.
-    </p>
-    <div class="source">— Etch Magazine</div>
-  </div>
-
-  <div class="review">
-    <p>
-      Deeply emotional — weaving a fabric of beautiful melodies and shining, optimistic lyrics.
-    </p>
-    <div class="source">— Sam Rose, Etch Magazine</div>
-  </div>
-
-  <div class="review">
-    <p>
-      What’s most striking about Kristin Plater’s live performances is her voice — it’s a remarkable instrument capable of absolutely captivating an audience.
-    </p>
-    <div class="source">— Mark Miazga, The Common Grounds Coffeehouse</div>
-  </div>
-
-  <div class="review">
-    <p>
-      Kristin Plater is poised for success.
-    </p>
-    <div class="source">— Lansing State Journal</div>
-  </div>
-
-  <div class="review">
-    <p>
-      A lot of raw talent.
-    </p>
-    <div class="source">— Bill Tenant, Musician</div>
-  </div>
-
-  <div class="review">
-    <p>
-      Fan love:
-      <br>“I think you totally rock!”
-      <br>“I was so impressed with your music and songwriting.”
-      <br>“Your songs are catchy, intelligent, and come straight from the soul.”
-      <br>“A National Treasure!!!”
-      <br>“It came, it saw, it conquered.”
-    </p>
-    <div class="source">— Fans</div>
-  </div>
-
-</div>
+</body>
+</html>
